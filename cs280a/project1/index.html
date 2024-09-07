@@ -27,7 +27,7 @@
         <p class="font-sans text-lg text-slate-500 m-3 px-8">Step 1: Initial Processing</p>
         <p class="font-sans m-5 px-16">Input image data is read as 2D numpy array and converted to floating point data type with values ranging from 0 to 1 (intensity rescaling).</p>
 
-        <p class="font-sans m-5 px-16 text-blue-500"><b>Explainations</b><br />
+        <p class="font-sans m-5 px-16 text-blue-500"><b>Explanations</b><br />
         Images with intensity scaled to always be between 0 and 1 allows the same program to work on different images that may not be ranged from 0 to 255 (e.g. images of type .tif).</p>
         <hr />
         
@@ -40,7 +40,7 @@
                 <p class="font-sans px-16">
                 <b>Detection: </b>Canny edge detector from SkImage library (<a class="text-blue-600" target="_blank" rel="noopener noreferrer" href="https://scikit-image.org/docs/stable/api/skimage.feature.html#skimage.feature.canny">skimage.feature.canny</a>) is used to detect edges from gradients, which returns a 2D boolean array of same size as input image with high value true (or 1) denoting edges, and low value false (or 0) denoting no edges for each pixel. The vertical and horizontal edges are then picked out as a border by examining each row and column of the array from Canny and see if the number of pixels with high value exceeds a certain threshold. <br /><br />
                 <b>Cropping: </b>the outer borders are cropped by searching starting from a horizontal or vertical position close to the original edges for each of the 4 outer edges (top, bottom, left, right) and look for the first border encountered, which will be the position for the cut (as shown in left picture). </p> 
-                <p class="font-sans mt-8 px-16 text-blue-500"><b>Explainations</b><br />
+                <p class="font-sans mt-8 px-16 text-blue-500"><b>Explanations</b><br />
                 Result of edge detection is based on the gradient and thus more accurate at picking up borders than using the original pixel values, as the concept of "blackness" may be relative instead of being a fixed range of pixel values. For cropping, the method assumes that the border edges won't be too different in size so that the search can always cover the border. This method may fail when the borders blend in with the channel images such that the edge detector fails to or incorrectly detect them. 
                 </p>    
             </div>
@@ -51,7 +51,7 @@
         <p class="font-sans m-5 px-16">
         <b>Separation: </b>using the inner borders detected by border detection in step 2, the 3 channel images are separated. The exact position of the two horizontal cuts to separate the channels are determined by starting at an estimated horizontal position and search both up and down to find closest border for the cut.<br /><br />
         <b>Enhancement: </b>after the 3 channels are separated, they are all enhanced using Contrast Limited Adaptive Histogram Equalization (CLAHE) from SkImage library (<a class="text-blue-600" target="_blank" rel="noopener noreferrer" href="https://scikit-image.org/docs/stable/api/skimage.exposure.html#skimage.exposure.equalize_adapthist">skimage.exposure.equalize_adapthist</a>), which enhances local contrast to deal with issues of over exposure in the channel images.</p>
-        <p class="font-sans m-5 px-16 text-blue-500"><b>Explainations</b><br />
+        <p class="font-sans m-5 px-16 text-blue-500"><b>Explanations</b><br />
         From testing, CLAHE allows some hardly visible aspects of the channel images to become more visible and increases overall contrast within the image, which leads to much more vibrant and realistic coloring when combined in the final step.</p>
         <img class="max-h-96 px-20 py-5 object-scale-down" src="images/clahe.png"/>
         <hr />
@@ -62,7 +62,7 @@
         <b>Alignment: </b>the alignment process tries to align the computed feature images to minimize the L2-Norm distance as the method of scoring and comparing alignment. With the blue channel fixed, the alignment is performed by trying a range of possible displacements of green and red channel feature images to find the displacement that minimizes L2-Norm when compared to the blue channel. More specifically, the channel feature images are padded and np.roll is used to perform displacements. The common area shared by the channel images are passed to the L2-Norm scoring function.<br /><br />
         <b>Pyramid Speedup: </b>rescale function from SkImage library (<a class="text-blue-600" target="_blank" rel="noopener noreferrer" href="https://scikit-image.org/docs/stable/api/skimage.transform.html#skimage.transform.rescale">skimage.transform.rescale</a>) is used to scale down high resolution images, and the pyramid is created layer by layer with each layer further scaling down by a factor of 2 compared to the previous layer. The pyramid is then iterated from lowest resolution layer to the highest, where the same alignment procedure is performed at each layer and the resulting displacement from previous layers are multiplied by a factor of 2 and added with the displacement of the current layer. 
         </p>
-        <p class="font-sans m-5 px-16 text-blue-500"><b>Explainations</b><br />
+        <p class="font-sans m-5 px-16 text-blue-500"><b>Explanations</b><br />
         From testing, even without the use of features the alignment can perform well for almost all sample images except for <i>emir.tif</i>. A potential reason is that emir's clothing actually appears with quite different intensities through the three channels which results in confusions with L2-Norm scoring. Therefore, the edge feature is added to help with the alignment when the intensities appear very different across channels for the same area.<br /><br />
         For scoring, L2-Norm is used for its overall effectiveness and efficiency. From testing, no notable improvements are found with Normalized Cross-Correlation (NCC) as scoring function. The structural similarity index is considered for its strong matching capabilities but is ultimately not used for taking too long to run.<br /><br />
         For pyramid speed up, the lower resolutions are used to perform rough alignments, and higher resolutions are used for more fine-grained alignments. This is much faster than directly searching through the high resolution image which requires a very large search space for proper alignment while operating on a large image array.
@@ -73,7 +73,7 @@
         <p class="font-sans m-5 px-16">
         The RGB mappings are adjusted on the final combined output image from the previous alignment step. The green channel is scaled down the most, and the red channel is scaled down slightly.
         </p>
-        <p class="font-sans m-5 px-16 text-blue-500"><b>Explainations</b><br />
+        <p class="font-sans m-5 px-16 text-blue-500"><b>Explanations</b><br />
         Even with great alignment, the overall output images tend to feel more greenish than natural. Therefore, the amount of green is cut down relative to the red and blue channels which appears to make output more clean and realistic.
         </p>
         <img class="max-h-96 px-20 py-5 object-scale-down" src="images/color_mapping.png"/>
