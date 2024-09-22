@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <!-- Title -->
+    <div class="container mx-auto p-10 m-5 my-10 border-solid border-2 border-indigo-200 rounded-md shadow-lg">
+      <p class="font-sans text-4xl font-bold text-center">CS280A Project 2: Fun with Filters and Frequencies</p>
+      <p class="font-sans text-xl mt-5 text-slate-500 text-center">by Junhua (Michael) Ma</p>
+    </div>
+
+    <!-- Part 1.1 -->
+    <div class="container mx-auto p-5 pb-12 m-5 my-10 border-solid border-2 border-indigo-200 rounded-md shadow-lg flex flex-col justify-center">
+      <p class="font-sans text-2xl ml-3 mb-3 font-bold">Finite Difference Operator</p>
+      <div class="border-t border-slate-600 mb-3"></div>
+
+      <p class="font-sans text-xl text-slate-500 m-3 px-8">Method & Explanations</p>
+      <p class="font-sans text-lg m-5 px-16">
+        The input image is convolved with the following simple finite difference filters to obtain partial derivative images dx and dy representing changes in the vertical and horizontal direction.
+      </p>
+      <img class="h-16 object-scale-down" src="images/finite_diff.png" />
+      <p class="font-sans text-lg m-5 px-16">
+        The gradient magnitude of the image is then computed as the L2 Norm of dx and dy as follows.
+      </p>
+      <img class="h-16 object-scale-down" src="images/grad_mag.png" />
+      <p class="font-sans text-lg m-5 px-16">
+        Finally, the gradient magnitude is binarized using a certain threshold to enhance the edges.
+      </p>
+      <div class="border-t border-slate-300 mx-10 my-3"></div>
+
+      <p class="font-sans text-xl text-slate-500 m-3 px-8 mb-5">Results</p>
+      <div class="flex mx-10 text-center gap-4">
+        <div class="flex-1 basis-1/3 bg-gray-200 p-4 rounded-md">
+          <p class="pb-2 font-bold">Input Image</p>
+          <div class="py-2 px-1 flex justify-center">
+            <img class="max-h-80 object-scale-down rounded-md" src="images/cameraman.png" />
+          </div>
+        </div>
+        <div class="flex-1 basis-2/3 bg-gray-100 p-4 rounded-md">
+          <p class="pb-2 font-bold">Partial Derivatives</p>
+          <div class="flex justify-center">
+            <div class="table">
+              <div class="table-row">
+                <div class="table-cell p-4 flex justify-center">
+                  <img class="max-h-80 object-scale-down rounded-md" src="images/gx.jpg" />
+                </div>
+                <div class="table-cell p-4 flex justify-center">
+                  <img class="max-h-80 object-scale-down rounded-md" src="images/gy.jpg" />
+                </div>
+              </div>
+              <div class="table-row">
+                <div class="table-cell font-semibold p-2">dx</div>
+                <div class="table-cell font-semibold p-2">dy</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex mx-10 text-center mt-5 gap-4">
+        <div class="flex-1 basis-1/2 bg-gray-200 p-4 rounded-md">
+          <p class="pb-2 font-bold">Gradient Magnitude</p>
+          <div class="py-2 px-1 flex justify-center">
+            <img class="max-h-80 object-scale-down rounded-md" src="images/gm.jpg" />
+          </div>
+        </div>
+        <div class="flex-1 basis-1/2 bg-gray-100 p-4 rounded-md">
+          <p class="pb-2 font-bold">Binarized Gradient Magnitude</p>
+          <div class="py-2 px-1 flex justify-center">
+            <img class="max-h-80 object-scale-down rounded-md" src="images/gm_binarized.jpg" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Part 1.2 -->
+    <div class="container mx-auto p-5 pb-12 m-5 my-10 border-solid border-2 border-indigo-200 rounded-md shadow-lg flex flex-col justify-center">
+      <p class="font-sans text-2xl ml-3 mb-3 font-bold">Derivative of Gaussian (DoG) Filter</p>
+      <div class="border-t border-slate-600 mb-3"></div>
+
+      <p class="font-sans text-xl text-slate-500 m-3 px-8">Method & Explanations</p>
+      <p class="font-sans text-lg m-5 px-16">
+        The result of finite difference filter by itself is affected by noise, which can be reduced by the process of smoothing.
+        Two methods are explored: <br /><br />
+        (1) <b>Blurred Finite Difference: </b>perform smoothing on input image with gaussian filter, then perform finite difference filtering as normal. <br />
+        (2) <b>Derivative of Gaussian: </b>compute derivative of gaussian as a filter and convolve with input image. <br /><br />
+        The same binarization procedure (with same threshold and setup) is used for comparison.
+      </p>
+      <div class="border-t border-slate-300 mx-10 my-3"></div>
+
+      <p class="font-sans text-xl text-slate-500 m-3 px-8 mb-5">Results</p>
+      <div class="flex items-center justify-around mx-10 text-center bg-gray-200 p-4 gap-4 mb-5 rounded-md">
+        <p class="text-lg font-bold p-1 mb-1 w-48">Blurred Finite Difference</p>
+        <div class="py-2 px-1 flex flex-col justify-center">
+          <p class="pb-2 font-bold">Gradient Magnitude</p>
+          <img class="max-h-80 object-scale-down rounded-md" src="images/blurred_gm.jpg" />
+        </div>
+        <div class="py-2 px-1 flex flex-col justify-center">
+          <p class="pb-2 font-bold">Binarized Gradient Magnitude</p>
+          <img class="max-h-80 object-scale-down rounded-md" src="images/blurred_gm_binarized.jpg" />
+        </div>
+      </div>
+      <div class="flex items-center justify-around mx-10 text-center bg-gray-100 p-4 gap-4 rounded-md">
+        <p class="text-lg font-bold p-1 mb-1 w-48">Derivative of Gaussian</p>
+        <div class="py-2 px-1 flex flex-col justify-center">
+          <p class="pb-2 font-bold">Gradient Magnitude</p>
+          <img class="max-h-80 object-scale-down rounded-md" src="images/dog_gm.jpg" />
+        </div>
+        <div class="py-2 px-1 flex flex-col justify-center">
+          <p class="pb-2 font-bold">Binarized Gradient Magnitude</p>
+          <img class="max-h-80 object-scale-down rounded-md" src="images/dog_gm_binarized.jpg" />
+        </div>
+      </div>  
+      <div class="flex items-center justify-around mx-10 text-center bg-gray-100 p-4 gap-4 rounded-md">
+        <p class="text-lg font-bold p-1 mb-1 w-48">DoG Filters</p>
+        <div class="py-2 px-1 flex flex-col">
+          <p class="pb-2 font-bold">Dx</p>
+          <img class="w-96 max-h-80 object-scale-down rounded-md" src="images/dog_fx.png" />
+        </div>
+        <div class="py-2 px-1 flex flex-col">
+          <p class="pb-2 font-bold">Dy</p>
+          <img class="w-96 max-h-80 object-scale-down rounded-md" src="images/dog_fy.png" />
+        </div>
+      </div>  
+
+      <p class="font-sans text-lg m-5 mt-10 px-16">
+        With smoothing, the resulting gradient magnitude is much clearer as the effect of noise is reduced. 
+        Additionally, the results between the two methods are mostly identical.
+      </p>
+    </div>
+
+    <!-- Part 2.1 -->
+    <div class="container mx-auto p-5 pb-12 m-5 my-10 border-solid border-2 border-indigo-200 rounded-md shadow-lg flex flex-col justify-center">
+      <p class="font-sans text-2xl ml-3 mb-3 font-bold">Image Sharpening</p>
+      <div class="border-t border-slate-600 mb-3"></div>
+      
+      <p class="font-sans text-xl text-slate-500 m-3 px-8">Method & Explanations</p>
+      <p class="font-sans text-lg m-5 px-16">
+        Input image is sharpened by enhancing (adding) high frequencies of the image.
+        To obtain the high frequencies, convolution is performed on the image with gaussian kernel as a low pass filter 
+        to first obtain the low frequencies, and then high frequencies is just <mark>original image - low frequencies</mark>.
+        Finally, the sharpened image is obtained from <mark>original image + alpha * high frequencies</mark>, 
+        where <mark>alpha</mark> is the degree of sharpening. <br /><br />
+        <b>Unsharp Mask Filter: </b> the above image sharpening procedure can be simplified down to just one convolution operation between the original
+        image and a laplacian of gaussian kernel. The laplacian of gaussian kernel (approximation) is computed as <mark>unit impulse - gaussian</mark>,
+        and the entire procedure follows the formula <mark>f + alpha * (f - conv(f,g)) = conv(f, (1 + alpha) * e - alpha * g)</mark> where <mark>f = original image, e = unit impulse, g = gaussian</mark>.
+        Both implementations are tested and return identical results.
+      </p>
+      <div class="border-t border-slate-300 mx-10 my-3"></div>
+
+      <p class="font-sans text-xl text-slate-500 m-3 px-8 mb-5">Results</p>
+
+      <p class="font-sans font-bold text-lg m-5 px-8">Taj Mahal</p> 
+      <div class="flex mx-10 text-center gap-8">
+        <div class="flex-1 basis-2/3 bg-gray-200 p-4 rounded-md flex items-center justify-around text-center">
+          <div class="p-2 flex flex-col justify-center">
+            <p class="pb-2 font-bold">Input Image</p>
+            <img class="max-h-96 object-scale-down rounded-md" src="images/taj.jpg" />
+          </div>
+          <div class="p-2 flex flex-col justify-center">
+            <p class="pb-2 font-bold">Sharpened <mark>alpha = 2.0</mark></p>
+            <img class="max-h-96 object-scale-down rounded-md" src="images/taj_sharp.jpg" />
+          </div>
+        </div>
+        <div class="flex-1 basis-1/3 bg-gray-100 p-4 rounded-md">
+          <p class="pb-2 font-bold">High Frequencies</p>
+          <div class="p-2 flex justify-center">
+            <img class="max-h-96 object-scale-down rounded-md" src="images/taj_hf.jpg" />
+          </div>
+        </div>
+      </div>
+
+      <p class="font-sans font-bold text-lg m-5 mt-10 px-8">Rural Road</p> 
+      <div class="flex mx-10 text-center gap-8">
+        <div class="flex-1 basis-4/5 bg-gray-200 p-4 flex items-center justify-around text-center rounded-md">
+          <div class="p-2 flex flex-col justify-center">
+            <p class="pb-2 font-bold">Input Image</p>
+            <img class="max-h-96 object-scale-down rounded-md" src="images/road.jpg" />
+          </div>
+          <div class="p-2 flex flex-col justify-center">
+            <p class="pb-2 font-bold">Sharpened <mark>alpha = 1.0</mark></p>
+            <img class="max-h-96 object-scale-down rounded-md" src="images/road_sharp.jpg" />
+          </div>
+          <div class="p-2 flex flex-col justify-center">
+            <p class="pb-2 font-bold">Sharpened <mark>alpha = 3.0</mark></p>
+            <img class="max-h-96 object-scale-down rounded-md" src="images/road_sharp1.jpg" />
+          </div>
+        </div>
+        <div class="flex-1 basis-1/5"></div>
+      </div>
+
+      <p class="font-sans font-bold text-lg m-5 mt-10 px-8">NYC (Resharpen Blurred Image)</p> 
+      <p class="font-sans text-lg mb-5 px-16">
+        Input image is initially clear and sharp, it is blurred with gaussian filter first and then sharpened.
+        In this case, the sharpened image is close to the original image but some details are still lost due
+        to the blurring, resulting in overall worse quality, especially for very small and exact details like 
+        window frames on the buildings.
+      </p>
+      <div class="bg-gray-200 p-4 mx-10 flex items-center justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center">
+          <p class="pb-2 font-bold">Input Image</p>
+          <img class="max-h-96 object-scale-down rounded-md" src="images/nyc.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center">
+          <p class="pb-2 font-bold">Sharpened <mark>alpha = 5.0</mark></p>
+          <img class="max-h-96 object-scale-down rounded-md" src="images/nyc_sharp.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center">
+          <p class="pb-2 font-bold">Blurred</p>
+          <img class="max-h-96 object-scale-down rounded-md" src="images/nyc_blur.jpg" />
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- Part 2.2 -->
+    <div class="container mx-auto p-5 pb-12 m-5 my-10 border-solid border-2 border-indigo-200 rounded-md shadow-lg flex flex-col justify-center">
+      <p class="font-sans text-2xl ml-3 mb-3 font-bold">Hybrid Images</p>
+      <div class="border-t border-slate-600 mb-3"></div>
+      
+      <p class="font-sans text-xl text-slate-500 m-3 px-8">Method & Explanations</p>
+      <p class="font-sans text-lg m-5 px-16">
+        The goal is to create hybrid images that changes based on viewing distance, following the idea that high frequencies
+        tend to dominate at close distances while low frequencies at farther distances.<br /><br />
+        The input requires a pair of images (well aligned). One image goes through a low pass filter to keep only lower frequencies, while the 
+        other image goes through a high pass filter to keep only higher frequencies. The low pass filter used is gaussian kernel, and
+        the high pass filter used is simply <mark>original image - low frequencies</mark>. The cutoff frequency of each filter is related
+        to the parameters of the gaussian kernel, which is obtained through experimentation. The final output is the average between
+        the low frequencies of one image and the high frequencies of the other.
+      </p>
+      <div class="border-t border-slate-300 mx-10 my-3"></div>
+
+      <p class="font-sans text-xl text-slate-500 m-3 px-8 mb-5">Results</p>
+      
+      <p class="font-sans font-bold text-lg m-5 px-8">Big Ben X Campanile</p> 
+      <div class="flex mx-10 text-center gap-8 max-h-[550px]">
+        <div class="flex-1 basis-1/3 bg-gray-200 p-10 rounded-md flex flex-col items-center text-center gap-12">
+          <div class="h-[210px] flex flex-col justify-center">
+            <p class="pb-2 font-bold">Low Frequency Image</p>
+            <img class="object-scale-down rounded-md max-h-full" src="images/bigben.jpg" />
+          </div>
+          <div class="h-[210px] flex flex-col justify-center">
+            <p class="pb-2 font-bold">High Frequency Image</p>
+            <img class="object-scale-down rounded-md max-h-full" src="images/campanile.jpg" />
+          </div>
+        </div>
+        <div class="flex-1 basis-2/3 bg-gray-100 p-4 rounded-md flex flex-grow flex-col items-center text-center">
+          <p class="pb-2 font-bold">Hybrid Image</p>
+          <div class="p-2 h-[470px] flex justify-center">
+            <img class="object-scale-down rounded-md max-h-full" src="images/hybrid1.jpg" />
+          </div>
+          <div class="p-2 h-[80px] flex justify-center">
+            <img class="object-scale-down rounded-md max-h-full" src="images/hybrid1.jpg" />
+          </div>
+        </div>
+      </div>
+      <div class="flex mx-10 mt-5 text-center max-h-[580px] justify-between gap-8">
+        <div class="w-2/3 bg-gray-200 p-8 grid grid-cols-2 items-center justify-center text-center rounded-md gap-8">
+          <div class="h-[200px] p-2 flex flex-col justify-center">
+            <p class="pb-2 font-bold">Low Frequency Image FFT</p>
+            <img class="max-h-full object-scale-down rounded-md" src="images/fft_lf.jpg" />
+          </div>
+          <div class="h-[200px] p-2 flex flex-col justify-center">
+            <p class="pb-2 font-bold">High Frequency Image FFT</p>
+            <img class="max-h-full object-scale-down rounded-md" src="images/fft_hf.jpg" />
+          </div>
+          <div class="h-[200px] p-2 flex flex-col justify-center">
+            <p class="pb-2 font-bold">Filtered Low Frequency Image FFT</p>
+            <img class="max-h-full object-scale-down rounded-md" src="images/fft_lf_filtered.jpg" />
+          </div>
+          <div class="h-[200px] p-2 flex flex-col justify-center">
+            <p class="pb-2 font-bold">Filtered High Frequency Image FFT</p>
+            <img class="max-h-full object-scale-down rounded-md" src="images/fft_hf_filtered.jpg" />
+          </div>
+        </div>
+        <div class="w-1/3 bg-gray-100 p-8 flex flex-col justify-center">
+          <div class="h-[250px] p-2 flex flex-col justify-center">
+            <p class="pb-2 font-bold">Hybrid Image FFT</p>
+            <img class="max-h-full object-scale-down rounded-md" src="images/fft_hybrid.jpg" />
+          </div> 
+        </div>    
+      </div>
+
+      <p class="font-sans font-bold text-lg m-5 mt-10 px-8">Time Square Over Time (Failure)</p> 
+      <p class="font-sans text-lg mb-5 px-16">
+        After trying different parameters like adjusting cutoff frequency or kernel sizes, I am unable to obtain a satisfactory
+        result. I think this is due to the large difference in the images despite being aligned around the center tower. This
+        results in a lack of resonance between the two that doesn't work well together in the hybrid.
+      </p>
+      <div class="flex mx-10 text-center gap-8">
+        <div class="flex-1 basis-3/5 bg-gray-200 p-4 rounded-md flex items-center justify-around text-center">
+          <div class="p-2 flex flex-col justify-center">
+            <p class="pb-2 font-bold">Low Frequency Image</p>
+            <img class="max-h-96 object-scale-down rounded-md" src="images/ny_old.jpg" />
+          </div>
+          <div class="p-2 flex flex-col justify-center">
+            <p class="pb-2 font-bold">High Frequency Image</p>
+            <img class="max-h-96 object-scale-down rounded-md" src="images/ny_new.jpg" />
+          </div>
+        </div>
+        <div class="flex-1 basis-2/5 bg-gray-100 p-4 rounded-md">
+          <p class="pb-2 font-bold">Hybrid Image</p>
+          <div class="p-2 flex justify-center">
+            <img class="max-h-96 pr-3 object-scale-down rounded-md" src="images/hybrid2.jpg" />
+            <img class="max-h-24 object-scale-down rounded-md" src="images/hybrid2.jpg" /> 
+          </div>
+        </div>
+      </div>
+
+      <p class="font-sans font-bold text-lg m-5 mt-10 px-8">Cat Loaf</p> 
+      <div class="flex mx-10 text-center gap-8 max-h-[550px]">
+        <div class="flex-1 basis-1/3 bg-gray-200 p-10 rounded-md flex flex-col items-center text-center gap-12">
+          <div class="h-[210px] flex flex-col justify-center">
+            <p class="pb-2 font-bold">Low Frequency Image</p>
+            <img class="object-scale-down rounded-md max-h-full" src="images/bread.jpg" />
+          </div>
+          <div class="h-[210px] flex flex-col justify-center">
+            <p class="pb-2 font-bold">High Frequency Image</p>
+            <img class="object-scale-down rounded-md max-h-full" src="images/cat_loaf.jpg" />
+          </div>
+        </div>
+        <div class="flex-1 basis-2/3 bg-gray-100 p-4 rounded-md flex flex-grow flex-col items-center text-center">
+          <p class="pb-2 font-bold">Hybrid Image</p>
+          <div class="p-2 h-[400px] flex justify-center">
+            <img class="object-scale-down rounded-md max-h-full" src="images/hybrid3.jpg" />
+          </div>
+          <div class="p-2 h-[80px] flex justify-center">
+            <img class="object-scale-down rounded-md max-h-full" src="images/hybrid3.jpg" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Part 2.3 -->
+    <div class="container mx-auto p-5 pb-12 m-5 my-10 border-solid border-2 border-indigo-200 rounded-md shadow-lg flex flex-col justify-center">
+      <p class="font-sans text-2xl ml-3 mb-3 font-bold">Gaussian & Laplacian Stacks</p>
+      <div class="border-t border-slate-600 mb-3"></div>
+      
+      <p class="font-sans text-xl text-slate-500 m-3 px-8">Method & Explanations</p>
+      <p class="font-sans text-lg m-5 px-16">
+        Gaussian and Laplacian stacks for an image are structures with levels that correspond to different frequency ranges and are utilized for multi-resolution blending. 
+        Unlike image pyramids, there's no downsampling for stacks so each level is the same size. <br /><br />
+        <b>Gaussian stack: </b>the top level contains the entire frequency range (the original image), and gaussian filter is applied level by level as
+        a low pass filter such that each level going down the pyramid is increasingly more blurred, or lower in frequency range. The recursive formula
+        for constructing the Gaussian stack <mark>gs</mark> is: <mark>gs[level = 0] = input image, gs[level > 0] = conv(gaussian_filter, gs[level - 1])</mark>.  <br /><br />
+        <b>Laplacian stack: </b>it's computed as a difference between adjacent levels of the Gaussian stack, so each level of the Laplacian stack 
+        represents a range of frequencies of the image similar to that of a staircase. The recursive formula for constructing the Laplacian stack 
+        <mark>ls</mark> using Gaussian stack <mark>gs</mark> with <mark>N</mark> levels is: <mark>ls[level = N - 1] = gs[-1], ls[level < N - 1] = gs[level] - gs[level + 1]</mark>.
+      </p>
+      <div class="border-t border-slate-300 mx-10 my-3"></div>
+
+      <p class="font-sans text-xl text-slate-500 m-3 px-8 mb-5">Results</p>
+
+      <p class="font-sans font-bold text-lg m-5 px-8">Gaussian Stack: Apple</p>  
+      <img class="px-12 object-scale-down rounded-md" src="images/gstack_a.jpg" />
+
+      <p class="font-sans font-bold text-lg m-5 px-8">Laplacian Stack: Apple</p>  
+      <img class="px-12 object-scale-down rounded-md" src="images/lstack_a.jpg" />
+
+      <p class="font-sans font-bold text-lg m-5 px-8">Gaussian Stack: Orange</p>  
+      <img class="px-12 object-scale-down rounded-md" src="images/gstack_b.jpg" />
+
+      <p class="font-sans font-bold text-lg m-5 px-8">Laplacian Stack: Orange</p>  
+      <img class="px-12 object-scale-down rounded-md" src="images/lstack_b.jpg" />
+
+      <p class="font-sans font-bold text-lg mx-5 mt-12 mb-5 px-8">Laplacian Stacks Blending Details</p>
+      <div class="px-20 flex flex-col justify-center items-center">
+        <div class="py-5 flex justify-center items-center text-center max-w-[600px]">
+          <p class="text-lg text-slate-500 font-bold w-1/5">Level 0</p>
+          <img class="object-scale-down w-4/5" src="images/level1.jpg" />
+        </div>
+        <div class="py-5 flex justify-center items-center text-center max-w-[600px]">
+          <p class="text-lg text-slate-500 font-bold w-1/5">Level 2</p>
+          <img class="object-scale-down w-4/5" src="images/level2.jpg" />
+        </div>
+        <div class="py-5 flex justify-center items-center text-center max-w-[600px]">
+          <p class="text-lg text-slate-500 font-bold w-1/5">Level 4</p>
+          <img class="object-scale-down w-4/5" src="images/level3.jpg" />
+        </div>
+        <div class="py-5 flex justify-center items-center text-center max-w-[600px]">
+          <p class="text-lg text-slate-500 font-bold w-1/5">Blend</p>
+          <img class="object-scale-down w-4/5" src="images/level4.jpg" />
+        </div>
+      </div> 
+      <p class="font-sans text-lg text-slate-700 m-5 px-20">
+        <b>Note: </b>to enhance the difference between levels, a modified gaussian stack implementation is used 
+        for which the sigma of the Gaussian filter is squared at each layer.
+      </p> 
+    </div>
+
+
+    <!-- Part 2.4 -->
+    <div class="container mx-auto p-5 pb-12 m-5 my-10 border-solid border-2 border-indigo-200 rounded-md shadow-lg flex flex-col justify-center">
+      <p class="font-sans text-2xl ml-3 mb-3 font-bold">Multi-resolution Blending</p>
+      <div class="border-t border-slate-600 mb-3"></div>
+      
+      <p class="font-sans text-xl text-slate-500 m-3 px-8">Method & Explanations</p>
+      <p class="font-sans text-lg m-5 px-16">
+        The Gaussian and Laplacian stacks are used for multi-resolution blending based on the following algorithm:
+      </p>
+      <p class="font-sans text-lg mx-20 px-5 py-5 mb-5 bg-gray-200 text-indigo-800 rounded-lg">
+        For input image pair <mark>(A, B)</mark> and binary mask image <mark>M</mark>: <br />
+        → <b>Step 1:</b> Compute Laplacian stacks <mark>LA</mark> and <mark>LB</mark> for <mark>A</mark> and <mark>B</mark><br />
+        → <b>Step 2:</b> Compute Gaussian stack <mark>GM</mark> for <mark>M</mark><br />
+        → <b>Step 3:</b> Blend each level of <mark>LA</mark> and <mark>LB</mark> into <mark>L</mark> where for <mark>level = i</mark>, <mark>L[i] = GM[i] * LA[i] + (1 - GM[i]) * LB[i]</mark>.<br />
+        → <b>Step 4:</b> Sum up all layers of <mark>L</mark> to obtain final blended image
+      </p>
+      <div class="border-t border-slate-300 mx-10 my-3"></div>
+
+      <p class="font-sans text-xl text-slate-500 m-3 px-8 mb-5">Results</p>
+
+      <p class="font-sans font-bold text-lg m-5 px-8">Rose Duet</p> 
+      <div class="flex mx-10 text-center gap-8">
+        <div class="flex-1 basis-2/3 bg-gray-200 p-4 rounded-md flex items-center justify-around text-center">
+          <div class="p-2 flex flex-col justify-center">
+            <p class="pb-2 font-bold">Image 1</p>
+            <img class="max-h-96 object-scale-down rounded-md" src="images/redrose.jpg" />
+          </div>
+          <div class="p-2 flex flex-col justify-center">
+            <p class="pb-2 font-bold">Image 2</p>
+            <img class="max-h-96 object-scale-down rounded-md" src="images/pinkrose.jpg" />
+          </div>
+          <div class="p-2 flex flex-col justify-center">
+            <p class="pb-2 font-bold">Mask</p>
+            <img class="max-h-36 object-scale-down rounded-md" src="images/mask_rose.jpg" />
+          </div>
+        </div>
+        <div class="flex-1 basis-1/3 bg-gray-100 p-4 rounded-md">
+          <p class="pb-2 font-bold">Blend</p>
+          <div class="p-2 flex justify-center">
+            <img class="max-h-96 object-scale-down rounded-md" src="images/blend_rose.jpg" />
+          </div>
+        </div>
+      </div>
+
+      <p class="font-sans font-bold text-lg m-5 mt-10 px-8">Sun Cat Flowery</p> 
+      <div class="flex mx-10 text-center gap-8">
+        <div class="flex-1 basis-2/3 bg-gray-200 p-4 rounded-md flex items-center justify-around text-center">
+          <div class="p-2 flex flex-col justify-center">
+            <p class="pb-2 font-bold">Image 1</p>
+            <img class="max-h-96 object-scale-down rounded-md" src="images/sunflower.jpg" />
+          </div>
+          <div class="p-2 flex flex-col justify-center">
+            <p class="pb-2 font-bold">Image 2</p>
+            <img class="max-h-96 object-scale-down rounded-md" src="images/cat.jpg" />
+          </div>
+          <div class="p-2 flex flex-col justify-center">
+            <p class="pb-2 font-bold">Mask</p>
+            <img class="max-h-36 object-scale-down rounded-md" src="images/mask_sunflower.jpg" />
+          </div>
+        </div>
+        <div class="flex-1 basis-1/3 bg-gray-100 p-4 rounded-md">
+          <p class="pb-2 font-bold">Blend</p>
+          <div class="p-2 flex justify-center">
+            <img class="max-h-96 object-scale-down rounded-md" src="images/blend_sunflower.jpg" />
+          </div>
+        </div>
+      </div>
+      <div class="px-20 mt-10 flex flex-col justify-center items-center">
+        <div class="py-5 flex justify-center items-center text-center max-w-[600px]">
+          <p class="text-lg text-slate-500 font-bold w-1/5">Level 0</p>
+          <img class="object-scale-down w-4/5" src="images/level1_sf.jpg" />
+        </div>
+        <div class="py-5 flex justify-center items-center text-center max-w-[600px]">
+          <p class="text-lg text-slate-500 font-bold w-1/5">Level 2</p>
+          <img class="object-scale-down w-4/5" src="images/level2_sf.jpg" />
+        </div>
+        <div class="py-5 flex justify-center items-center text-center max-w-[600px]">
+          <p class="text-lg text-slate-500 font-bold w-1/5">Level 4</p>
+          <img class="object-scale-down w-4/5" src="images/level3_sf.jpg" />
+        </div>
+        <div class="py-5 flex justify-center items-center text-center max-w-[600px]">
+          <p class="text-lg text-slate-500 font-bold w-1/5">Blend</p>
+          <img class="object-scale-down w-4/5" src="images/level4_sf.jpg" />
+        </div>
+      </div> 
+
+      <p class="font-sans font-bold text-lg m-5 mt-10 px-8">Latte Voyage</p> 
+      <div class="flex mx-10 text-center gap-8">
+        <div class="flex-1 basis-1/3 bg-gray-200 p-10 rounded-md flex flex-col items-center text-center gap-6">
+          <div class="flex flex-col justify-center">
+            <p class="pb-2 font-bold">Image 1</p>
+            <img class="object-scale-down rounded-md" src="images/latte.jpg" />
+          </div>
+          <div class="flex flex-col justify-center">
+            <p class="pb-2 font-bold">Image 2</p>
+            <img class="object-scale-down rounded-md" src="images/boat.jpg" />
+          </div>
+          <div class="flex flex-col justify-center">
+            <p class="pb-2 font-bold">Mask</p>
+            <img class="object-scale-down rounded-md max-h-32" src="images/mask_latte.jpg" />
+          </div>
+        </div>
+        <div class="flex-1 basis-2/3 bg-gray-100 p-10 rounded-md flex flex-col justify-around flex-grow text-center">
+          <div class="flex flex-col justify-center">
+            <p class="pb-2 font-bold">Blend</p>
+            <img class="object-scale-down rounded-md" src="images/blend_latte.jpg" />
+          </div>
+          <div class="flex flex-col justify-center">
+            <p class="pb-2 font-bold">Details</p>
+            <img class="object-scale-down rounded-md" src="images/details_latte.jpg" />
+          </div>
+        </div>
+      </div>
+
+      <p class="font-sans font-bold text-lg m-5 mt-10 px-8">Otter-zilla Strikes</p> 
+      <div class="flex mx-10 text-center gap-8">
+        <div class="flex-1 basis-1/3 bg-gray-200 p-10 rounded-md flex flex-col items-center text-center gap-6">
+          <div class="flex flex-col justify-center">
+            <p class="pb-2 font-bold">Image 1</p>
+            <img class="object-scale-down rounded-md" src="images/otter.jpg" />
+          </div>
+          <div class="flex flex-col justify-center">
+            <p class="pb-2 font-bold">Image 2</p>
+            <img class="object-scale-down rounded-md" src="images/city.jpg" />
+          </div>
+          <div class="flex flex-col justify-center">
+            <p class="pb-2 font-bold">Mask</p>
+            <img class="object-scale-down rounded-md max-h-32" src="images/mask_otter.jpg" />
+          </div>
+        </div>
+        <div class="flex-1 basis-2/3 bg-gray-100 p-10 rounded-md flex flex-col justify-around flex-grow text-center">
+          <div class="flex flex-col justify-center">
+            <p class="pb-2 font-bold">Blend</p>
+            <img class="object-scale-down rounded-md" src="images/blend_otter.jpg" />
+          </div>
+          <div class="flex flex-col justify-center">
+            <p class="pb-2 font-bold">Details</p>
+            <img class="object-scale-down rounded-md" src="images/details_otter.jpg" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Takeaway -->
+    <div class="container mx-auto p-5 pb-12 m-5 my-10 border-solid border-2 border-indigo-200 rounded-md shadow-lg flex flex-col justify-center">
+      <p class="font-sans text-2xl ml-3 mb-3 font-bold">Key Takeaway</p>
+      <div class="border-t border-slate-600 mb-3"></div>
+      
+      <p class="font-sans text-xl m-5 px-8">
+        Images consist of a range of frequencies, and by manipulating the images at the frequency level using filters we can create very astounding effects that
+        are hard to do from the pixel level. Low pass filters like Gaussian filters can remove the higher
+        frequencies of the image, which are typically more sharp and exact details of the image. Simply by adding
+        more of high frequencies, the image seems clearer as its details are more sharp. 
+      </p>
+    </div>
+  </body>
+</html>
