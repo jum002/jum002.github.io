@@ -28,7 +28,7 @@
       <p class="font-sans text-xl text-slate-500 m-3 px-8">Method & Explanations</p>
       <p class="font-sans text-lg m-5 px-16 mb-10">
         <b>Computing Homography: </b>Homography is a mapping or transformation that accounts for not just translation but also other aspects like scaling and rotation.
-        Given a set of N points in image 1 and the set of corresponding N points in image 2, where N >= 8, the homography transformation matrix can be solved from
+        Given a set of N points in image 1 and the set of corresponding N points in image 2, where N >= 4, the homography transformation matrix can be solved from
         a least square system with the <b>np.linalg.lstsq</b> function. The least square system used is shown below with scale factor i=1 for a total of 8 unknowns a, b, c, d, e, f, g, h.
       </p>
       <div class="px-16 mx-16 flex space-x-4 justify-center items-center">
@@ -36,7 +36,7 @@
         <img class="h-48 object-scale-down flex-[2]" src="images/homography_eq2.png" />
       </div>
       <p class="font-sans text-lg m-5 px-16 mb-10">
-        <b>Rectification: </b>Given an image, can specify 8 points to define an area A within the image. To rectify the selected area A, we can compute the homography
+        <b>Rectification: </b>Given an image, can specify 4 or more points to define an area A within the image. To rectify the selected area A, we can compute the homography
         transformation H between A and a blank rectangular canvas image C, and then warp A onto C. The resulting rectified A will appear in C. Additionally, by using the inverse homography transformation
         by inversing H, we can also warp any image C back onto selected area A in the original image. This allow adding new content onto the original image in a way that 
         fits its geometry and context.
@@ -45,7 +45,7 @@
 
       <p class="font-sans text-xl text-slate-500 m-3 px-8 mb-5">Results</p>
 
-      <p class="font-sans font-bold text-lg m-5 px-8">Ligntning McQueen</p> 
+      <p class="font-sans font-bold text-lg m-5 px-8">Ligntning McQueen at Peterson Automotive Museum</p> 
       <div class="flex mx-10 mb-5 text-center justify-center gap-4">
         <div class="flex-[2] bg-gray-200 p-4 rounded-md">
           <p class="pb-2 text-lg font-bold">Original Image</p>
@@ -54,7 +54,7 @@
           </div>
         </div>
         <div class="flex-1 p-4 rounded-md flex text-start items-center">
-          <p class="pb-2 text-lg">Two areas are defined on the image, with the outer boundary of each area defined by 8 points. <br /><br />
+          <p class="pb-2 text-lg">Two areas are defined on the image, with the outer boundary of each area defined by 4 points. <br /><br />
             The green points define area 1.<br/>
             The blue points define area 2.
           </p>
@@ -310,9 +310,227 @@
 
       <p class="font-sans text-lg mt-5 mb-5 px-16">
         The above result has a visible vertical discrepency between image 2 and 3. This may be due to a change in camera center of projection between the two 
-        images when the photos are taken, as the blend overall looks consistent otherwise. The issue of ghosting also appears as some chairs not not very clear.
-        This is a limitation to the simple alpha feathering method and may be solved by methods like two-band blending with laplacian stacks.
+        images when the photos are taken, as the blend overall looks consistent otherwise.
       </p>
     </div>
+
+    <!-- Part 2 Title -->
+    <div class="container mx-auto p-5 m-5 my-10 mt-20 border-solid border-4 bg-violet-200 border-violet-800 rounded-md shadow-lg flex flex-col justify-center text-center">
+      <!-- <p class="font-sans text-2xl ml-3 font-bold">Part 1: Image Warping and Mosaicing</p> -->
+      <p class="font-sans text-3xl text-slate-700 font-bold m-3 px-8">Part B: Feature Matching & Autostitching</p>
+    </div>
+
+    <!-- Part 2.1 -->
+    <div class="container mx-auto p-5 pb-12 m-5 my-10 border-solid border-2 border-indigo-200 rounded-md shadow-lg flex flex-col justify-center">
+      <p class="font-sans text-2xl ml-3 mb-3 font-bold">Extracting Feature Descriptors</p>
+      <div class="border-t border-slate-600 mb-3"></div>
+      
+      <p class="font-sans text-xl text-slate-500 m-3 px-8">Method & Explanations</p>
+      <p class="font-sans text-lg m-5 px-16">
+        <b>Corner Feature Detection: </b>Harris corner detector utilizes changes in gradients to pick up on features in images that are likely corner points. The result of Harries corner detection 
+        is a list of points that are likely corners, together with corner response value for each pixel of the image.
+      </p>
+      <div class="flex flex-wrap mx-10 text-center gap-4 mb-5">
+        <div class="flex-1 bg-gray-200 p-4 rounded-md">
+          <p class="pb-2 text-lg font-bold">Harris Corner Response</p>
+          <div class="py-2 px-1 flex flex-col justify-center items-center">
+            <img class="max-h-96 object-scale-down rounded-md" src="images/harris_vals.png" />
+          </div>
+        </div>
+        <div class="flex-1 bg-gray-100 p-4 rounded-md">
+          <p class="pb-2 text-lg font-bold">Detected Corners (Top 10%)</p>
+          <div class="py-2 px-1 flex justify-center">
+            <img class="max-h-96 object-scale-down rounded-md" src="images/harris_ex.png" />
+          </div>
+        </div>
+      </div>
+
+      <p class="font-sans text-lg m-5 px-16">
+        <b>Adaptive Non-Maximal Suppression: </b> Based on the approach described in the paper <i>“Multi-Image Matching using Multi-Scale Oriented Patches” by Brown et al</i> , the detected corner feature 
+          points are filtered ("suppressed") such that they become more evenly spread out, which leads to better overall feature points.<br /><br /> The overall idea is to filter the feature points 
+          such that only feature points evenly spaced with higher corner response are kept, while other points are discarded. For my implementation, each corner point is assigned a radius initialized to 0 and
+          the radius for all point equally increase by 1 at each iteration. Whenever overlap occurs between two or more circles, only the point with largest corner response remain. This process can keep going until 
+          a desired number of feature points is reached, during which the radius value would also be the minimum radius for the current suppression outcome.
+        </b>
+      </p>
+      <div class="flex mx-10 mb-5 mt-5 text-center justify-center">
+        <div class="bg-gray-200 rounded-md w-full">
+          <div class="py-2 flex flex-col justify-center">
+            <p class="pb-2 pt-4 text-lg font-bold">Adaptive Non-Maximal Suppression (N=50, Radius=51)</p>
+            <div class="flex mx-10 text-center mb-5">
+              <div class="mr-8 pt-2 flex justify-center">
+                <img class="max-h-96 object-scale-down rounded-md" src="images/max_suppression1.png" />
+              </div>
+              <div class="pt-2 flex justify-center">
+                <img class="max-h-96 object-scale-down rounded-md" src="images/max_suppression2.png" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+
+      <p class="font-sans text-lg m-5 px-16">
+        <b>Feature Descriptors: </b> To better match between feature points, we extract feature descriptors, which are small patches surrounding each feature point.
+        For my implementation, all feature descriptors are 40 by 40 patches downsampled to 8 by 8 gain-normalized patches.
+        </b>
+      </p>
+      <div class="flex mx-10 mb-5 mt-5 text-center justify-center">
+        <div class="bg-gray-200 p-4 rounded-md w-full">
+          <div class="py-2 px-1 flex flex-col justify-center">
+            <p class="pb-2 text-lg font-bold">Example Feature Descriptors (8 by 8)</p>
+            <div class="flex flex-col mx-10 text-center mb-5">
+              <div class="pt-2 flex justify-center">
+                <img class="max-h-80 object-scale-down rounded-md" src="images/feature_desc1.png" />
+              </div>
+              <div class="pt-2 flex justify-center">
+                <img class="max-h-80 object-scale-down rounded-md" src="images/feature_desc2.png" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </div>
+
+    <!-- Part 2.2 -->
+    <div class="container mx-auto p-5 pb-12 m-5 my-10 border-solid border-2 border-indigo-200 rounded-md shadow-lg flex flex-col justify-center">
+      <p class="font-sans text-2xl ml-3 mb-3 font-bold">Feature Matching & Recovering Homography</p>
+      <div class="border-t border-slate-600 mb-3"></div>
+      
+      <p class="font-sans text-xl text-slate-500 m-3 px-8">Method & Explanations</p>
+      <p class="font-sans text-lg m-5 px-16">
+        <b>Feature Matching: </b>To match the features of images <mark>A</mark> and <mark>B</mark> using feature descriptors <mark>DA</mark> and <mark>DB,</mark> for each feature descriptor <mark>DA_i</mark> in <mark>DA</mark>, the euclidean distance between
+        <mark>DA_i</mark> and all of <mark>DB</mark> are computed, and the two feature descriptors from DB with smallest euclidean distance (closest to <mark>DA_i</mark>) are obtained as <mark>DB_NN1</mark> (with smallest distance <mark>d_NN1</mark>) and <mark>DB_NN2</mark> (with second smallest distance <mark>d_NN2</mark>), which are 
+        the 2 nearest neighbors of <mark>DA_i</mark>. Then, the <b>Lowe threshold</b> is applied where <mark>DA_i</mark> and <mark>DB_NN1</mark> would form a match only if <mark>d_NN1/d_NN2</mark> is less than a certain threshold. The overall idea is that by passing the Lowe threshold test,
+        <mark>d_NN1</mark> would need to be sufficiently different from <mark>d_NN2</mark>, which would lead to a more confident matching since there are no close alternatives.
+      </p>
+      <p class="font-sans text-lg m-5 px-16">
+        <b>Recovering Homography: </b>After feature descriptors are matched and a list of corresponding feature points are obtained, we can apply <b>RANSAC</b> to recover the homography. Since the 
+          feature matching step is not perfect and could have incorrect matches, the previous homography computation setup would not work reliably. Instead, we can recover homography with RANSAC, which is robust to minor matching errors.
+          The main steps to implement RANSAC are shown below.
+        </b>
+      </p>
+      <p class="font-sans text-lg mx-20 px-5 py-5 bg-gray-200 text-indigo-800 rounded-lg mb-5">
+        Given list of corresponding feature points <mark>A</mark> and <mark>B</mark> of two images, iterate N times and for each iteration: <br />
+        → <b>Step 1:</b> Select 4 random pairs of feature points <mark>(Ai, Bi)</mark>.<br />
+        → <b>Step 2:</b> Compute homography transformation matrix <mark>H_est</mark> from the 4 points selected in step 1.<br />
+        → <b>Step 3:</b> Transform all points <mark>A</mark> into <mark>A'</mark> using <mark>H_est</mark>. <br />
+        → <b>Step 4:</b> Obtain <b>"inliers"</b> as all pairs <mark>(Ai, Bi)</mark> such that distance between <mark>Ai'</mark> and <mark>Bi</mark> is less than certain threshold.<br />
+        → <b>Step 5:</b> Store inliers with maximal number of pairs.<br />
+        After N iterations: <br/>
+        → <b>Step 6:</b> Compute homography transformation matrix <mark>H</mark> based on largest inliers.
+      </p>
+      <div class="border-t border-slate-300 mx-10 my-3"></div>
+
+      <p class="font-sans text-xl text-slate-500 m-3 px-8 mb-5">Results</p>
+
+      <p class="font-sans font-bold text-lg m-5 mt-5 px-8">Xučyun Ruwway Courtyard</p>  
+      <div class="flex mx-10 mb-5 text-center justify-center">
+        <div class="bg-gray-200 rounded-md w-full">
+          <div class="py-2 flex flex-col justify-center">
+            <p class="pb-2 pt-4 text-lg font-bold">Feature Matching</p>
+            <div class="flex mx-10 text-center mb-5">
+              <div class="mr-8 pt-2 flex justify-center">
+                <img class="max-h-96 object-scale-down rounded-md" src="images/ruwway/matches1.png" />
+              </div>
+              <div class="pt-2 flex justify-center">
+                <img class="max-h-96 object-scale-down rounded-md" src="images/ruwway/matches2.png" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+      <div class="flex flex-wrap mx-10 text-center gap-4">
+        <div class="flex-1 bg-gray-200 p-4 rounded-md">
+          <p class="pb-2 text-lg font-bold">With Manual Correspondances</p>
+          <div class="py-2 px-1 flex flex-col justify-center items-center">
+            <img class="max-h-96 object-scale-down rounded-md" src="images/ruwway/mosaic_ruwway_3im.jpg" />
+          </div>
+        </div>
+        <div class="flex-1 bg-gray-100 p-4 rounded-md">
+          <p class="pb-2 text-lg font-bold">With Auto-Matching & Stitching</p>
+          <div class="py-2 px-1 flex justify-center">
+            <img class="max-h-96 object-scale-down rounded-md" src="images/ruwway/mosaic_ruwway_3im_auto.jpg" />
+          </div>
+        </div>
+      </div>
+
+      <p class="font-sans font-bold text-lg m-5 mt-10 px-8">Xučyun Ruwway Courtyard (Cylindrical Mapping)</p>
+      <div class="flex mx-10 mb-5 text-center justify-center">
+        <div class="bg-gray-200 p-4 rounded-md w-full">
+          <div class="py-2 px-1 flex flex-col justify-center">
+            <p class="pb-2 text-lg font-bold">With Manual Correspondances</p>
+            <img class="max-h-80 object-scale-down rounded-md" src="images/ruwway/mosaic_ruwway_7im.jpg" />
+          </div>
+        </div>
+      </div>  
+      <div class="flex mx-10 mb-5 text-center justify-center">
+        <div class="bg-gray-100 p-4 rounded-md w-full">
+          <div class="py-2 px-1 flex flex-col justify-center">
+            <p class="pb-2 text-lg font-bold">With Auto-Matching & Stitching</p>
+            <img class="max-h-80 object-scale-down rounded-md" src="images/ruwway/mosaic_ruwway_7im_auto.jpg" />
+          </div>
+        </div>
+      </div>  
+
+      <p class="font-sans font-bold text-lg m-5 px-8">View of LA from Getty Center</p> 
+      <div class="flex flex-wrap mx-10 mb-5 text-center gap-4">
+        <div class="flex-1 bg-gray-200 p-4 rounded-md">
+          <p class="pb-2 text-lg font-bold">With Manual Correspondances</p>
+          <div class="py-2 px-1 flex flex-col justify-center items-center">
+            <img class="max-h-96 object-scale-down rounded-md" src="images/getty/mosaic_3im.jpg" />
+          </div>
+        </div>
+        <div class="flex-1 bg-gray-100 p-4 rounded-md">
+          <p class="pb-2 text-lg font-bold">With Auto-Matching & Stitching</p>
+          <div class="py-2 px-1 flex justify-center">
+            <img class="max-h-96 object-scale-down rounded-md" src="images/getty/mosaic_3im_auto.jpg" />
+          </div>
+        </div>
+      </div> 
+
+      <p class="font-sans font-bold text-lg m-5 px-8">Berkeley Street View</p> 
+      <div class="flex mx-10 mb-5 text-center justify-center">
+        <div class="bg-gray-200 rounded-md w-full">
+          <div class="py-2 flex flex-col justify-center">
+            <p class="pb-2 pt-4 text-lg font-bold">Feature Matching</p>
+            <div class="flex mx-10 text-center mb-5">
+              <div class="mr-8 pt-2 flex justify-center">
+                <img class="max-h-96 object-scale-down rounded-md" src="images/street/matches1.png" />
+              </div>
+              <div class="pt-2 flex justify-center">
+                <img class="max-h-96 object-scale-down rounded-md" src="images/street/matches2.png" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+      <div class="flex flex-wrap mx-10 text-center gap-4">
+        <div class="flex-1 bg-gray-200 p-4 rounded-md">
+          <p class="pb-2 text-lg font-bold">Auto-Matching & Stitching (2 Images)</p>
+          <div class="py-2 px-1 flex flex-col justify-center items-center">
+            <img class="max-h-96 object-scale-down rounded-md" src="images/street/street_2im.jpg" />
+          </div>
+        </div>
+        <div class="flex-1 bg-gray-100 p-4 rounded-md">
+          <p class="pb-2 text-lg font-bold">Auto-Matching & Stitching (3 Images)</p>
+          <div class="py-2 px-1 flex justify-center">
+            <img class="max-h-96 object-scale-down rounded-md" src="images/street/street_3im.jpg" />
+          </div>
+        </div>
+      </div> 
+    </div>
+
+    <!-- Takeaway -->
+    <div class="container mx-auto p-5 pb-12 m-5 my-10 border-solid border-2 border-indigo-200 rounded-md shadow-lg flex flex-col justify-center">
+      <p class="font-sans text-2xl ml-3 mb-3 font-bold">Key Takeaway</p>
+      <div class="border-t border-slate-600 mb-3"></div>
+      <p class="font-sans text-xl m-5 px-8">
+        Transformation matrices like homography transformation matrix are really powerful as they can derive the general spatial transformations between images from 
+        just a few correspondence points. By properties by matrix multiplications and inverses, the obtained transformations can be combined or inverted to allow 
+        interesting and cool effects that relates to the geometry properties of the image like rectification.
+      </p>
+    </div>
+
+
   </body>
 </html>
