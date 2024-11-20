@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <!-- Title -->
+    <div class="container mx-auto p-10 m-5 my-10 border-solid border-2 border-indigo-200 rounded-md shadow-lg">
+      <p class="font-sans text-4xl font-bold text-center">CS280A Project 5: Fun with Diffusion Models</p>
+      <p class="font-sans text-xl mt-5 text-slate-500 text-center">by Junhua (Michael) Ma</p>
+    </div>
+
+    <!-- Part A Title -->
+    <div class="container mx-auto p-5 m-5 my-10 border-solid border-4 bg-violet-200 border-violet-800 rounded-md shadow-lg flex flex-col justify-center text-center">
+      <p class="font-sans text-3xl text-slate-700 font-bold m-3 px-8">Part A: The Power of Diffusion Models</p>
+    </div>
+
+    <!-- Part 1.0 -->
+    <div class="container mx-auto p-5 pb-12 m-5 my-10 border-solid border-2 border-indigo-200 rounded-md shadow-lg flex flex-col justify-center">
+      <p class="font-sans text-2xl ml-3 mb-3 font-bold">Diffusion Model Sampling</p>
+      <div class="border-t border-slate-600 mb-3"></div>
+
+      <p class="font-sans text-lg m-5 px-8">
+        For part A of the project, the <a class="text-blue-500 underline" href="https://huggingface.co/docs/diffusers/api/pipelines/deepfloyd_if" target="_blank" rel="noopener noreferrer">DeepFloyd IF</a> 
+        diffusion model is used. In this section, the diffusion model is used to generate images for selected prompts with different settings of <mark>num_inference_steps</mark> or <mark>nis</mark> for short.
+      </p>
+
+      <p class="font-sans font-bold text-lg m-5 px-8">Prompt: "an oil painting of a snowy mountain village"</p> 
+      <div class="bg-gray-200 p-4 mx-10 flex items-center justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center">
+          <p class="pb-2 font-bold"><mark>nis=3</mark></p>
+          <img class="max-h-96 object-scale-down rounded-md" src="images/sample_3steps_0.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center">
+          <p class="pb-2 font-bold"><mark>nis=6</mark></p>
+          <img class="max-h-96 object-scale-down rounded-md" src="images/sample_6steps_0.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center">
+          <p class="pb-2 font-bold"><mark>nis=10</mark></p>
+          <img class="max-h-96 object-scale-down rounded-md" src="images/sample_10steps_0.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center">
+          <p class="pb-2 font-bold"><mark>nis=20</mark></p>
+          <img class="max-h-96 object-scale-down rounded-md" src="images/sample_20steps_0.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center">
+          <p class="pb-2 font-bold"><mark>nis=40</mark></p>
+          <img class="max-h-96 object-scale-down rounded-md" src="images/sample_40steps_0.jpg" />
+        </div>
+      </div>
+
+      <p class="font-sans font-bold text-lg m-5 mt-10 px-8">Prompt: "a man wearing a hat"</p> 
+      <div class="bg-gray-200 p-4 mx-10 flex items-center justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center">
+          <p class="pb-2 font-bold"><mark>nis=3</mark></p>
+          <img class="max-h-96 object-scale-down rounded-md" src="images/sample_3steps_1.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center">
+          <p class="pb-2 font-bold"><mark>nis=6</mark></p>
+          <img class="max-h-96 object-scale-down rounded-md" src="images/sample_6steps_1.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center">
+          <p class="pb-2 font-bold"><mark>nis=10</mark></p>
+          <img class="max-h-96 object-scale-down rounded-md" src="images/sample_10steps_1.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center">
+          <p class="pb-2 font-bold"><mark>nis=20</mark></p>
+          <img class="max-h-96 object-scale-down rounded-md" src="images/sample_20steps_1.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center">
+          <p class="pb-2 font-bold"><mark>nis=40</mark></p>
+          <img class="max-h-96 object-scale-down rounded-md" src="images/sample_40steps_1.jpg" />
+        </div>
+      </div>
+
+      <p class="font-sans font-bold text-lg m-5 mt-10 px-8">Prompt: "a rocket ship"</p> 
+      <div class="bg-gray-200 p-4 mx-10 flex items-center justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center">
+          <p class="pb-2 font-bold"><mark>nis=3</mark></p>
+          <img class="max-h-96 object-scale-down rounded-md" src="images/sample_3steps_2.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center">
+          <p class="pb-2 font-bold"><mark>nis=6</mark></p>
+          <img class="max-h-96 object-scale-down rounded-md" src="images/sample_6steps_2.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center">
+          <p class="pb-2 font-bold"><mark>nis=10</mark></p>
+          <img class="max-h-96 object-scale-down rounded-md" src="images/sample_10steps_2.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center">
+          <p class="pb-2 font-bold"><mark>nis=20</mark></p>
+          <img class="max-h-96 object-scale-down rounded-md" src="images/sample_20steps_2.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center">
+          <p class="pb-2 font-bold"><mark>nis=40</mark></p>
+          <img class="max-h-96 object-scale-down rounded-md" src="images/sample_40steps_2.jpg" />
+        </div>
+      </div>
+
+      <p class="font-sans text-lg m-5 my-10 px-8">
+        From the results, the <mark>num_inference_steps</mark> value affects the quality of the generated image, with higher value resulting in higher quality image
+        and takes longer time to run, and lower value resulting in poorer quality image that are more noisy and blurry.
+      </p>
+
+    </div>
+
+    <!-- Part 1.1 - 1.4 -->
+    <div class="container mx-auto p-5 pb-12 m-5 my-10 border-solid border-2 border-indigo-200 rounded-md shadow-lg flex flex-col justify-center">
+      <p class="font-sans text-2xl ml-3 mb-3 font-bold">Forward & Denoising</p>
+      <div class="border-t border-slate-600 mb-3"></div>
+
+      <p class="font-sans text-2xl text-slate-500 m-5 px-8">Forward Process</p>
+      <p class="font-sans text-lg m-5 mt-1 px-8">
+        The forward process is a key part of diffusion which adds random gaussian noise to a clean image <mark>x_0</mark> to generate noisy image <mark>x_t</mark> for <mark>t = [0, T]</mark> using 
+        interpolation concepts to allow control the amount of noise, with <mark>x_T</mark> being pure noise image.
+      </p>
+      <p class="font-sans font-bold text-lg m-5 px-8">Campanile, forwarding with <mark>T = 999</mark></p>  
+      <div class="bg-gray-200 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t = 0</mark> (original)</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_1_t0.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t = 250</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_1_t250.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t = 500</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_1_t500.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t = 750</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_1_t750.jpg" />
+        </div>
+      </div>
+      <div class="border-t border-slate-300 mx-10 my-3 mt-10"></div>
+
+      <p class="font-sans text-2xl text-slate-500 m-5 px-8">Classical Denoising</p>
+      <p class="font-sans text-lg m-5 mt-1 px-8">
+        Simple image denoising using gaussian blur filtering to remove noise.
+      </p>
+      <p class="font-sans font-bold text-lg m-5 px-8">Campanile, gaussian blur denoising with <mark>T = 999</mark></p>  
+      <div class="bg-gray-200 p-4 mx-10 flex items-center justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center">
+          <p class="pb-2 font-bold" style="width: 100px;">Noisy</p>
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold mb-6 mt-1"><mark>t = 250</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_1_t250.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold mb-6 mt-1"><mark>t = 500</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_1_t500.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold mb-6 mt-1"><mark>t = 750</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_1_t750.jpg" />
+        </div>
+      </div>
+      <div class="bg-gray-200 p-4 mx-10 flex items-center justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center">
+          <p class="pb-2 font-bold" style="width: 100px;">Denoised</p>
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_2_clean_t250.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_2_clean_t500.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_2_clean_t750.jpg" />
+        </div>
+      </div>
+      <div class="border-t border-slate-300 mx-10 my-3 mt-10"></div>
+
+      <p class="font-sans text-2xl text-slate-500 m-5 px-8">One-Step Denoising</p>
+      <p class="font-sans text-lg m-5 mt-1 px-8">
+        Image denoising using stage 1 unet of DeepFloyd diffusion model as denoiser with the prompt "a high quality photo".
+        The unet outputs the estimated noise, and the denoised image is obtained by subtracting the estimated noise from the noisy image.
+      </p>
+      <p class="font-sans font-bold text-lg m-5 px-8">Campanile, one-step denoising with <mark>T = 999</mark></p>  
+      <div class="bg-gray-200 p-4 mx-10 flex items-center justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center">
+          <p class="pb-2 font-bold" style="width: 100px;">Noisy</p>
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold mb-6 mt-1"><mark>t = 250</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_1_t250.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold mb-6 mt-1"><mark>t = 500</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_1_t500.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold mb-6 mt-1"><mark>t = 750</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_1_t750.jpg" />
+        </div>
+      </div>
+      <div class="bg-gray-200 p-4 mx-10 flex items-center justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center">
+          <p class="pb-2 font-bold" style="width: 100px;">Denoised</p>
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_3_clean_t250.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_3_clean_t500.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_3_clean_t750.jpg" />
+        </div>
+      </div>
+      <div class="border-t border-slate-300 mx-10 my-3 mt-10"></div>
+
+      <p class="font-sans text-2xl text-slate-500 m-5 px-8">Iterative Denoising</p>
+      <p class="font-sans text-lg m-5 mt-1 px-8">
+        Using the same one-step denoising setup with DeepFloyd diffusion model, we can denoise iteratively over multiple steps instead to denoise the image.
+        This will improve the denoising outcome when there's more noise at larger timesteps (as <mark>t</mark> gets closer to <mark>T</mark>). <br /><br />
+        The overall idea of iterative denoising is that given noisy image <mark>x_t</mark> for a certain timestep <mark>t_start</mark> in range <mark>[0, T]</mark>, 
+        we can break up the range of timesteps <mark>[0, t_start]</mark> into equivalent strides and perform one-step denoising over each stride.
+        With this setup, the noisy image <mark>x_t</mark> becomes a bit less noisy after each iteration until it becomes clean at <mark>x_0</mark>.
+      </p>
+      <p class="font-sans font-bold text-lg m-5 px-8">Campanile, iterative denoising with <mark>T = 999</mark>, <mark>stride = 30</mark>, <mark>t_start = 690</mark></p>  
+      <div class="bg-gray-200 p-4 mx-10 flex items-center justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t = 690</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_4_t690.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t = 540</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_4_t540.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t = 390</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_4_t390.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t = 240</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_4_t240.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t = 90</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_4_t90.jpg" />
+        </div>
+      </div>
+      <div class="bg-gray-100 p-4 mx-10 mt-5 mb-5 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold">Original</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_1_t0.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold">Iteratively Denoised</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_4_clean_iterative.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold">One-Step Denoised</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_4_clean_onestep.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold">Gaussian Blur Denoised</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_4_clean_blur.jpg" />
+        </div>
+      </div>
+
+      <p class="font-sans text-lg m-5 mb-10 px-8">
+        <b>Note: </b>Unless otherwise specified, all results in later sections uses <mark>T = 999</mark> and <mark>stride = 30</mark>.
+      </p>
+
+    </div>
+
+    <!-- Part 1.5 - 1.6 -->
+    <div class="container mx-auto p-5 pb-12 m-5 my-10 border-solid border-2 border-indigo-200 rounded-md shadow-lg flex flex-col justify-center">
+      <p class="font-sans text-2xl ml-3 mb-3 font-bold">Iterative Denoising Sampling & CFG</p>
+      <div class="border-t border-slate-600 mb-3"></div>
+      
+      <p class="font-sans text-2xl text-slate-500 m-5 px-8">Sampling with Iterative Denoising</p>
+      <p class="font-sans text-lg m-5 mt-1 px-8">
+        Using iterative denoising setup but starting at a larger timestep close to <mark>T</mark> or starting with noisy image close to pure noise,
+        we can generate random images from the sampling process. The initial image at <mark>t_start</mark> in this case is a pure noise image generated
+        from normal distribution instead of adding noise to a clean image.  
+      </p>
+      <p class="font-sans font-bold text-lg m-5 px-8">Samples from iterative denoising with <mark>t_start = 990</mark></p> 
+      <div class="bg-gray-100 p-4 mx-10 flex items-center justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_5_0.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_5_1.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_5_2.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_5_3.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_5_4.jpg" />
+        </div>
+      </div>
+      <div class="border-t border-slate-300 mx-10 my-3 mt-10"></div>
+
+      <p class="font-sans text-2xl text-slate-500 m-5 px-8">Classifier-Free Guidance (CFG)</p>
+      <p class="font-sans text-lg m-5 mt-1 px-8">
+        To improve the quality of generated images at the cost of decreased diversity, the technique CFG can be added to the iterative denoising setup.
+        Instead of directly obtaining noise estimate from the unet, we now first obtain both a conditional and an unconditional noise estimate, and 
+        the final noise estimate is derived using both noise estimates. The CFG scaling factor <mark>gamma</mark> controls the strength of CFG, 
+        which results in higher quality images when <mark>gamma > 1</mark>. The conditional noise estimate is the output of unet with prompt "a high quality photo" 
+        and the unconditional noise estimate is the output of unet with empty null prompt "".
+      </p>
+      <p class="font-sans font-bold text-lg m-5 px-8">Samples from iterative denoising + CFG with <mark>gamma = 7.0</mark>, <mark>t_start = 990</mark> (with upsampling)</p> 
+      <div class="bg-gray-100 p-4 mx-10 mb-10 flex items-center justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_6_0.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_6_1.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_6_2.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_6_3.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_6_4.jpg" />
+        </div>
+      </div>
+
+      <p class="font-sans text-lg m-5 mt-1 px-8">
+        <b>Note: </b>Unless otherwise specified, all results in the following sections refers to iterative denoising with CFG with <mark>gamma = 7.0</mark>
+        simply as the "iterative denoising setup", where CFG is always applied.
+      </p>
+
+    </div>
+
+    <!-- Part 1.7 -->
+    <div class="container mx-auto p-5 pb-12 m-5 my-10 border-solid border-2 border-indigo-200 rounded-md shadow-lg flex flex-col justify-center">
+      <p class="font-sans text-2xl ml-3 mb-3 font-bold">Image-to-Image Translation</p>
+      <div class="border-t border-slate-600 mb-3"></div>
+      
+      <p class="font-sans text-2xl text-slate-500 m-5 px-8">SDEdit</p>
+      <p class="font-sans text-lg m-5 mt-1 px-8">
+        We can follow the SDEdit algorithm to make edits to a given image by adding a certain amount of noise to it and then denoise it
+        using mostly same iterative denoising with CFG setup as previous section. The more noise added, the larger the edit as iterative denoising happens over more iterations which leads to more room to deviate from 
+        the original clean image. With too much noise added such that the image is close to pure noise, then the editing process would generate more random 
+        images similar to the previous section.
+      </p>
+      <p class="font-sans font-bold text-lg m-5 px-8">Campanile, SDEdit</p> 
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold">original</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_1_t0.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 390</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_0_si20.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 690</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_0_si10.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 780</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_0_si7.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 840</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_0_si5.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 900</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_0_si3.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 960</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_0_si1.jpg" />
+        </div>
+      </div>
+      <div class="border-t border-slate-300 mx-10 my-3 mt-10"></div>
+
+      <p class="font-sans text-2xl text-slate-500 m-5 px-8">Editing Web & Hand-Drawn Images</p>
+      <p class="font-sans text-lg m-5 mt-1 px-8">
+        Using the SDEdit setup, we can edit images by adding certain amount of noises and then denoise them. When added noise is not too much,
+        the denoised outcome can still retain some properties of the original image while also introduce new features.
+      </p>
+
+      <p class="font-sans font-bold text-lg m-5 px-8">Pikachu (Web), SDEdit (with upsampling)</p> 
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold">original</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_1_web1.png" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 390</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_1_web1_si20.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 690</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_1_web1_si10.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 780</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_1_web1_si7.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 840</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_1_web1_si5.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 900</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_1_web1_si3.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 960</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_1_web1_si1.jpg" />
+        </div>
+      </div>
+
+      <p class="font-sans font-bold text-lg m-5 mt-10 px-8">Colored Cat (Drawn), SDEdit</p> 
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold">original</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_1_drawn1.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 390</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_1_drawn1_si20.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 690</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_1_drawn1_si10.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 780</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_1_drawn1_si7.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 840</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_1_drawn1_si5.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 900</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_1_drawn1_si3.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 960</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_1_drawn1_si1.jpg" />
+        </div>
+      </div>
+
+      <p class="font-sans font-bold text-lg m-5 mt-10 px-8">Car (Drawn), SDEdit</p> 
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold">original</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_1_drawn2.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 390</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_1_drawn2_si20.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 690</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_1_drawn2_si10.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 780</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_1_drawn2_si7.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 840</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_1_drawn2_si5.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 900</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_1_drawn2_si3.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 960</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_1_drawn2_si1.jpg" />
+        </div>
+      </div>
+      <div class="border-t border-slate-300 mx-10 my-3 mt-10"></div>
+
+      <p class="font-sans text-2xl text-slate-500 m-5 px-8">Inpainting</p>
+      <p class="font-sans text-lg m-5 mt-1 px-8">
+        Using the SDEdit setup, we can apply a binary mask to every iteration such that noise and denoising only happens within selected region of the image,
+        while the rest of the image remains unchanged.
+      </p>
+
+      <p class="font-sans font-bold text-lg m-5 px-8">Campanile, masked SDEdit with <mark>t_start = 390</mark></p> 
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold">original</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_1_t0.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold">Mask</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_2_inpaint1_mask.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold">To Replace</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_2_inpaint1_hole.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold">Inpainted</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_2_inpaint1_si20.jpg" />
+        </div>
+      </div>
+
+      <p class="font-sans font-bold text-lg m-5 mt-10 px-8">Palace (Object Removal), masked SDEdit with <mark>t_start = 690</mark></p> 
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold">original</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_2_inpaint3_im.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold">Mask</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_2_inpaint3_mask.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold">To Replace</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_2_inpaint3_hole.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold">Inpainted</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_2_inpaint3_si10.jpg" />
+        </div>
+      </div>
+
+      <p class="font-sans font-bold text-lg m-5 mt-10 px-8">Cat (Background Swap), masked SDEdit</p> 
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold">original</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_2_inpaint2_im.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold">Mask</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_2_inpaint2_mask.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold">To Replace</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_2_inpaint2_hole.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full"></div>
+      </div>
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 390</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_2_inpaint2_si20.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 540</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_2_inpaint2_si15.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 690</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_2_inpaint2_si10.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 840</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_2_inpaint2_si5.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 960</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_2_inpaint2_si1.jpg" />
+        </div>
+      </div>
+      <div class="border-t border-slate-300 mx-10 my-3 mt-10"></div>
+
+      <p class="font-sans text-2xl text-slate-500 m-5 px-8">Text-Conditional Image-to-Image Translation</p>
+      <p class="font-sans text-lg m-5 mt-1 px-8">
+        Using the SDEdit setup, instead of using the generic prompt "a high quality photo" as conditional prompt input to the unet such that 
+        random images would be sampled from pure noise and leads to more unpredictable edits, we can instead use a more specific conditional prompt 
+        so that the unet would denoise towards a more specific direction instead. This leads to edits that have certain focus.
+      </p>
+
+      <p class="font-sans font-bold text-lg m-5 px-8">Campanile, text-conditional SDEdit with <mark>prompt = "a rocket ship"</mark></p> 
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold">original</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_1_t0.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 390</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_3_cond1_si20.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 690</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_3_cond1_si10.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 780</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_3_cond1_si7.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 840</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_3_cond1_si5.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 900</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_3_cond1_si3.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 960</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_3_cond1_si1.jpg" />
+        </div>
+      </div>
+
+      <p class="font-sans font-bold text-lg m-5 mt-10 px-8">Einstein, text-conditional SDEdit with <mark>prompt = "an oil painting of an old man"</mark></p> 
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold">original</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_3_cond2_im.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 390</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_3_cond2_si20.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 690</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_3_cond2_si10.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 780</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_3_cond2_si7.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 840</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_3_cond2_si5.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 900</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_3_cond2_si3.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 960</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_3_cond2_si1.jpg" />
+        </div>
+      </div>
+
+      <p class="font-sans font-bold text-lg m-5 mt-10 px-8">Cat, text-conditional SDEdit with <mark>prompt = "a photo of a dog"</mark></p> 
+      <div class="bg-gray-100 p-4 mx-10 mb-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold">original</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_3_cond3_im.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 390</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_3_cond3_si20.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 690</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_3_cond3_si10.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 780</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_3_cond3_si7.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 840</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_3_cond3_si5.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 900</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_3_cond3_si3.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>t_start = 960</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_7_3_cond3_si1.jpg" />
+        </div>
+      </div>
+
+    </div>
+
+     <!-- Part 1.8 - 1.9 -->
+     <div class="container mx-auto p-5 pb-12 m-5 my-10 border-solid border-2 border-indigo-200 rounded-md shadow-lg flex flex-col justify-center">
+      <p class="font-sans text-2xl ml-3 mb-3 font-bold">Constrained Image Generation</p>
+      <div class="border-t border-slate-600 mb-3"></div>
+      
+      <p class="font-sans text-2xl text-slate-500 m-5 px-8">Visual Anagrams</p>
+      <p class="font-sans text-lg m-5 mt-1 px-8">
+        Using iterative denoising setup, but the final noise estimate is an average of noise estimate of image with <mark>promp1</mark>
+        computed as <mark>e1 = unet(x_t, t, prompt1)</mark> and noise estimate of flipped image with <mark>prompt2</mark> computed as 
+        <mark>e2 = flip(unet(flip(x_t), t, prompt2))</mark>. This would results in generated images looking like <mark>prompt1</mark>
+        in the normal orientation and <mark>prompt2</mark> when flipped upside down.
+      </p>
+
+      <p class="font-sans font-bold text-lg mx-5 m-5 px-8">Anagrams (images on right side are upside-down of images on left side, and follows <mark>prompt2</mark>)</p> 
+      <div class="bg-gray-200 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>prompt1 = "an oil painting of people around a campfire"</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_8_1.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>prompt2 = "an oil painting of an old man"</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_8_1_flipped.jpg" />
+        </div>
+      </div>
+      <div class="bg-gray-100 p-4 mx-10 mt-5 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>prompt1 = "an oil painting of people around a campfire"</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_8_2.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>prompt2 = "an oil painting of a snowy mountain village"</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_8_2_flipped.jpg" />
+        </div>
+      </div>
+      <div class="bg-gray-100 p-4 mx-10 mt-5 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>prompt1 = "a lithograph of waterfalls"</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_8_3.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>prompt2 = "a lithograph of a skull"</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_8_3_flipped.jpg" />
+        </div>
+      </div>
+      <div class="border-t border-slate-300 mx-10 my-3 mt-10"></div>
+
+      <p class="font-sans text-2xl text-slate-500 m-5 px-8">Hybrid Images</p>
+      <p class="font-sans text-lg m-5 mt-1 px-8">
+        Using iterative denoising setup, but the final noise estimate is the frequency blend two noise esimates <mark>e1 = unet(xt, t, prompt1)</mark>
+        and <mark>e2 = unet(xt, t, prompt2)</mark>, specifically <mark>e = lf(e1) + hf(e2)</mark> where <mark>hf</mark> is high pass filter and 
+        <mark>lf</mark> is simple gaussian blur low pass filter. This would generate images that look like <mark>prompt1</mark> when viewed from further away
+        and <mark>prompt2</mark> when viewed closer to the image.
+      </p>
+
+      <p class="font-sans font-bold text-lg m-5 px-8">Hybrids with <mark>prompt1 = "a lithograph of a skull" (far)</mark>, 
+        <mark>prompt2 = "a lithograph of waterfalls" (near)</mark> (with upsampling)</p>
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_9_1_2.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_9_1_3.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_9_1_4.jpg" />
+        </div>
+      </div>
+
+      <p class="font-sans font-bold text-lg m-5 mt-10 px-8">Hybrids with <mark>prompt1 = "an oil painting of people around a campfire" (far)</mark>, 
+        <mark>prompt2 = "an oil painting of a snowy mountain village" (near)</mark> (with upsampling)</p> 
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_9_2_1.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_9_2_2.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_9_2_4.jpg" />
+        </div>
+      </div>
+
+      <p class="font-sans font-bold text-lg m-5 mt-10 px-8">Hybrids with <mark>prompt1 = "a lithograph of waterfalls" (far)</mark>, 
+        <mark>prompt2 = "an oil painting of a snowy mountain village" (near)</mark> (with upsampling)</p> 
+      <div class="bg-gray-100 p-4 mx-10 mb-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_9_3_0.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_9_3_1.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/1_9_3_2.jpg" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Part 2 -->
+    <div class="container mx-auto p-5 pb-12 m-5 my-10 border-solid border-2 border-indigo-200 rounded-md shadow-lg flex flex-col justify-center">
+      <p class="font-sans text-2xl ml-3 mb-3 font-bold">Bells & Whistles </p>
+      <div class="border-t border-slate-600 mb-3"></div>
+      
+      <p class="font-sans text-2xl text-slate-500 m-5 px-8">Image Blending</p>
+      <p class="font-sans text-lg m-5 mt-1 px-8">
+        Using iterative denoising setup, but the final noise is a weighted sum of noise estimates <mark>e1 = unet(x_t, t, prompt1)</mark> and 
+        <mark>e2 = unet(x_t, t, prompt2)</mark>, specifically <mark>e = e1 * R + e2 * (1 - R)</mark> with ratio <mark>R</mark>. This would generate 
+        images that are a blend of two prompts, the <mark>R</mark> is used to tune the process for improved results.
+      </p>
+
+      <p class="font-sans font-bold text-lg m-5 px-8">Blends with <mark>prompt1 = "a rocket ship"</mark>, 
+        <mark>prompt2 = "a pencil"</mark>, <mark>R = 0.35</mark> (with upsampling)</p>
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/2_1_1_0.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/2_1_1_1.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/2_1_1_2.jpg" />
+        </div>
+      </div>
+
+      <p class="font-sans font-bold text-lg m-5 mt-10 px-8">Blends with <mark>prompt1 = "an oil painting of an old man"</mark>, 
+        <mark>prompt2 = "a lithograph of a skull"</mark>, <mark>R = 0.75</mark> (with upsampling)</p>
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/2_1_2_0.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/2_1_2_2.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/2_1_2_3.jpg" />
+        </div>
+      </div>
+      <div class="border-t border-slate-300 mx-10 my-3 mt-10"></div>
+
+      <p class="font-sans text-2xl text-slate-500 m-5 px-8">Symmetric Images</p>
+      <p class="font-sans text-lg m-5 mt-1 px-8">
+        Using iterative denoising setup, but at each iteration a symmetric version of the image <mark>x_sym_t</mark> is obtained by setting 
+        right half to be the flipped left side of image <mark>x_t</mark>. The final image <mark>x_t</mark> is a weight sum of the original 
+        <mark>x_t</mark> and <mark>x_sym_t</mark> by the formula <mark>x_t = x_t * (1 - sym_R) + x_sym_t * sym_R</mark> for a certain ratio <mark>sym_R</mark>. <br /><br />
+        From my testing, the generated images would have strange and noisy background if bigger <mark>sym_R</mark> values are used (including <mark>sym_R = 1</mark>
+        which means the weighted sum process is not applied and <mark>x_t = x_sym_t</mark> directly), and the weighted sum especially with smaller <mark>sym_R</mark> values 
+        seems to improve the results. <br /><br />
+        Since the symmetry constraint is simply applied over <mark>x_t</mark> at the end of each iteration, it can be easily appended to many previous procedures,
+        including the visual anagrams to generate symmetric anagram images.
+      </p>
+
+      <p class="font-sans font-bold text-lg m-5 px-8">Symmetric with <mark>prompt = "a photo of a man"</mark>, <mark>sym_R = 0.25</mark></p>
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/2_2_1_0.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/2_2_1_1.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/2_2_1_2.jpg" />
+        </div>
+      </div>
+
+      <p class="font-sans font-bold text-lg m-5 mt-10 px-8">Symmetric with <mark>prompt = "a lithograph of waterfalls"</mark>, <mark>sym_R = 0.25</mark></p>
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/2_2_2_0.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/2_2_2_1.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/2_2_2_2.jpg" />
+        </div>
+      </div>
+
+      <p class="font-sans font-bold text-lg m-5 mt-10 px-8">Symmetric Anagram with <mark>sym_R = 0.15</mark></p>
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>prompt1 = "an oil painting of people around a campfire"</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/2_2_3_1.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>prompt2 = "an oil painting of an old man"</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px; transform: rotate(180deg);" src="images/2_2_3_1.jpg" />
+        </div>
+      </div>
+      <div class="border-t border-slate-300 mx-10 my-3 mt-10"></div>
+
+      <p class="font-sans text-2xl text-slate-500 m-5 px-8">Sequential Image Generation</p>
+      <p class="font-sans text-lg m-5 mt-1 px-8">
+        Using masked iterative denoising setup, I attempted to generate images to the left and right of an given image by shifting the original image to the left or right,
+        and filling the empty areas with random noise. For each iteration, the amount of shifting is based on the <mark>step_size</mark>. 
+        After the new leftmost or rightmost patch is replaced, the new image is shifted again, and the process repeats until the entire original image 
+        has been shifted to either left or right, and only generated image remains. <br /><br />
+        Overall, this simple method does seem to generate some cool results, but it takes a while to run and also the initially generated images 
+        are quite unclear and noisy, which I applied a quick one-step denoising to clean up the result.
+      </p>
+
+      <p class="font-sans font-bold text-lg m-5 px-8">Sequential Generation with <mark>step_size = 4</mark></p>
+      <div class="bg-gray-100 p-4 mx-10 flex items-center justify-center text-center rounded-md">
+        <div class="flex gap-1 items-end">
+          <div class="flex flex-col justify-center">
+            <p class="pb-2 font-bold">Generated Left</p>
+            <img class="rounded-md object-contain" style="height: 250px;" src="images/2_3_l.jpg" />
+          </div>
+          <div class="flex flex-col justify-center">
+            <p class="pb-2 font-bold">Original</p>
+            <img class="rounded-md object-contain" style="height: 250px;" src="images/2_3_im.jpg" />
+          </div>
+          <div class="flex flex-col justify-center">
+            <p class="pb-2 font-bold">Generated Right</p>
+            <img class="rounded-md object-contain" style="height: 250px;" src="images/2_3_r.jpg" />
+          </div>
+        </div>
+      </div>
+      <p class="font-sans font-bold text-lg mt-5 mb-3 mx-5 px-8">Generating left image</p>
+      <div class="bg-gray-100 p-4 mx-10 mb-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/2_3_seq1.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/2_3_seq2.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/2_3_seq3.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/2_3_seq4.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/2_3_seq5.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/2_3_seq6.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/2_3_seq7.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/2_3_seq8.jpg" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Part B Title -->
+    <div class="container mx-auto p-5 m-5 my-10 mt-20 border-solid border-4 bg-violet-200 border-violet-800 rounded-md shadow-lg flex flex-col justify-center text-center">
+      <p class="font-sans text-3xl text-slate-700 font-bold m-3 px-8">Part B: Diffusion Models from Scratch</p>
+    </div>
+
+    <!-- Part 1 -->
+    <div class="container mx-auto p-5 pb-12 m-5 my-10 border-solid border-2 border-indigo-200 rounded-md shadow-lg flex flex-col justify-center">
+      <p class="font-sans text-2xl ml-3 mb-3 font-bold">Training Denoising Unet</p>
+      <div class="border-t border-slate-600 mb-3"></div>
+
+      <p class="font-sans text-2xl text-slate-500 m-5 px-8">Training</p>
+      <p class="font-sans text-lg m-5 mt-1 px-8">
+        <b>Model: </b>The unet model is implemented using PyTorch, which follows a simple encoder and decoder architecture with hidden dimension <mark>D = 128</mark>.
+      </p>
+
+      <p class="font-sans text-lg m-5 mt-1 px-8">
+        <b>Dataset: </b>The MNIST dataset is used to train the denoiser. For each image <mark>X</mark>, a certain amount of random noise 
+        will be added to the image to form noisy image <mark>X_n</mark>, and the pair <mark>(X_n, X)</mark> will be used for training.
+        <mark>X_n</mark> is input to unet that outputs a clean image <mark>X_pred</mark> which will be compared with the original clean image <mark>X</mark>
+        as label to compute the loss. The L2 loss function is used. <br /><br />
+        As shown in chart below, different amount of noise specified by <mark>sigma</mark> between 0 and 1 is added to the MNIST images, with
+        <mark>sigma = 0.0</mark> being the original clean MNIST images, and resulting images becomes incresingly more noisy as <mark>sigma</mark> goes from 0 to 1.
+      </p>
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center max-w-[1200px]">
+          <img class="object-scale-down rounded-md" src="images/b1_1.jpg" />
+        </div>
+      </div>
+
+      <p class="font-sans text-lg m-5 mt-10 px-8">
+        <b>Training Results: </b>For this section, we train a simple unet using only <mark>sigma = 0.5</mark> for all MNIST images.
+        This should result in unet model being good at denoising noisy images at a constant noise level. The training is done over 5 epochs, with 
+        batch size of 256 and Adam optimizer with learning rate of 1e-4. <br /><br />
+        The training loss plot is shown below.
+      </p>
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center">
+          <img class="object-scale-down rounded-md" src="images/b1_2.jpg" />
+        </div>
+      </div>
+
+      <p class="font-sans text-lg m-5 mt-10 px-8">Sampled denoising results after 1 epoch:</p>
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center max-w-[500px]">
+          <img class="object-scale-down rounded-md" src="images/b1_3.jpg" />
+        </div>
+      </div>
+
+      <p class="font-sans text-lg m-5 mt-10 px-8">Sampled denoising results after 5 epochs:</p>
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center max-w-[500px]">
+          <img class="object-scale-down rounded-md" src="images/b1_4.jpg" />
+        </div>
+      </div>
+      <div class="border-t border-slate-300 mx-10 my-3 mt-10"></div>
+
+      <p class="font-sans text-2xl text-slate-500 m-5 px-8">Out-of-Distribution Testing</p>
+      <p class="font-sans text-lg m-5 mt-1 px-8">
+        As the denoiser is only trained for <mark>sigma = 0.5</mark>, we can also test the performance of the unet model on other 
+        <mark>sigma</mark> values to see how well the model performs generally. <br /><br />
+        The result is shown below where for different <mark>sigma</mark> values, the noisy images (top row) and the corresponding 
+        denoised images (bottom row).
+      </p>
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center">
+          <img class="object-scale-down rounded-md" src="images/b1_5.jpg" />
+        </div>
+      </div>
+      <p class="font-sans text-lg m-5 my-10 px-8">
+        From the result we can see that the unet model performs well for all <mark>sigma</mark> values less than or equal to 0.5, which are images 
+        that are no more noisy than its training data. For more noisy images with <mark>sigma > 0.5</mark>, the output is less clear but still surprisingly
+        good overall.
+      </p>
+      
+    </div>
+
+    <!-- Part 2 -->
+    <div class="container mx-auto p-5 pb-12 m-5 my-10 border-solid border-2 border-indigo-200 rounded-md shadow-lg flex flex-col justify-center">
+      <p class="font-sans text-2xl ml-3 mb-3 font-bold">Training Diffusion Model</p>
+      <div class="border-t border-slate-600 mb-3"></div>
+
+      <p class="font-sans text-2xl text-slate-500 m-5 px-8">Adding Time-Conditioning to Unet</p>
+      <p class="font-sans text-lg m-5 mt-1 px-8">The overall setup aims to implement DDPM to create a diffusion model from the unet.</p>
+      <p class="font-sans text-lg m-5 mt-1 px-8">
+        <b>Model: </b>To better generalized the unet to different noise levels and works as part of an actual diffusion model, the time scalar <mark>t</mark> is injected into the network 
+        to enable time-conditioning for the unet. In addition, the unet is modified to output predicted noise image instead of predicted 
+        clean image, which follows the DeepFloyd unet model setup. The modified unet would basically function as <mark>noise_est = unet(x_t, t)</mark>
+        given noisy image <mark>x_t</mark> at noise level <mark>t</mark>. The number of hidden dimension of unet used is <mark>D = 64</mark>. 
+      </p>
+      <p class="font-sans text-lg m-5 mt-1 px-8">
+        <b>Dataset: </b>Given MNIST image, a certain random noise <mark>e</mark> is added to the image to create noisy image <mark>x_t</mark>, with amount of noise based on <mark>t</mark>.
+        The <mark>x_t</mark> and <mark>t</mark> will be inputed into the network to obtain the predicted noise <mark>e_pred</mark>, and the loss will be computed 
+        as the L2 loss between <mark>e</mark> and <mark>e_pred</mark>.
+      </p>
+      <p class="font-sans text-lg m-5 mt-1 px-8">
+        <b>Training Results: </b>The training is done over 20 epochs, with batch size of 128, Adam optimizer with initial learning rate of 1e-3, 
+        and exponential elarning rate decay schedular with <mark>gamma = 0.1^(1/num_epochs)</mark>. <br /><br />
+        The training loss plot is shown below.
+      </p>
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center">
+          <img class="object-scale-down rounded-md" src="images/b2_1.jpg" />
+        </div>
+      </div>
+
+      <p class="font-sans text-lg mx-5 mb-2 mt-10 px-8">Sampled results after different number of epochs during training (with <mark>T = 300</mark>, <mark>stride = 1</mark>, no CFG):</p>
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>epoch = 1</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/b2_1_1.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold">gif</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/b2_1_1.gif" />
+        </div>
+      </div>
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>epoch = 5</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/b2_1_5.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold">gif</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/b2_1_5.gif" />
+        </div>
+      </div>
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>epoch = 10</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/b2_1_10.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold">gif</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/b2_1_10.gif" />
+        </div>
+      </div>
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>epoch = 20</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/b2_1_20.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold">gif</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/b2_1_20.gif" />
+        </div>
+      </div>
+      <div class="border-t border-slate-300 mx-10 my-3 mt-10"></div>
+
+      <p class="font-sans text-2xl text-slate-500 m-5 px-8">Adding Class-Conditioning to Unet</p>
+      <p class="font-sans text-lg m-5 mt-1 px-8">
+        <b>Model: </b>For better results and more control for image generation, we can add class-conditioning to the unet by injecting 
+        class <mark>c</mark> from 0 to 9 (with one-hot encoding) in a way similar to adding time-conditioning. The unet now functions as 
+        <mark>noise_est = unet(x_t, t, c)</mark> given noisy image <mark>x_t</mark>, noise level <mark>t</mark>, and class <mark>c</mark>.
+      </p>
+      <p class="font-sans text-lg m-5 mt-1 px-8">
+        <b>Dataset: </b>Given MNIST image and its label <mark>c</mark>, a certain random noise <mark>e</mark> is added to the image to create noisy image <mark>x_t</mark>, with amount of noise based on <mark>t</mark>.
+        The <mark>x_t</mark>, <mark>t</mark>, and <mark>c</mark> will be inputed into the network to obtain the predicted noise <mark>e_pred</mark>, and the loss will be computed 
+        as the L2 loss between <mark>e</mark> and <mark>e_pred</mark>.
+      </p>
+      <p class="font-sans text-lg m-5 mt-1 px-8">
+        <b>Training Results: </b>The training is done over 20 epochs, with batch size of 128, Adam optimizer with initial learning rate of 1e-3, 
+        and exponential elarning rate decay schedular with <mark>gamma = 0.1^(1/num_epochs)</mark>. <br /><br />
+        The training loss plot is shown below.
+      </p>
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center">
+          <img class="object-scale-down rounded-md" src="images/b2_2.jpg" />
+        </div>
+      </div>
+
+      <p class="font-sans text-lg mx-5 mb-2 mt-10 px-8">Sampled results after different number of epochs during training (with with <mark>T = 300</mark>, <mark>stride = 1</mark>, and CFG with <mark>gamma = 5.0</mark>):</p>
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>epoch = 1</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/b2_2_1.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold">gif</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/b2_2_1.gif" />
+        </div>
+      </div>
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>epoch = 5</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/b2_2_5.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold">gif</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/b2_2_5.gif" />
+        </div>
+      </div>
+      <div class="bg-gray-100 p-4 mx-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>epoch = 10</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/b2_2_10.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold">gif</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/b2_2_10.gif" />
+        </div>
+      </div>
+      <div class="bg-gray-100 p-4 mx-10 mb-10 flex items-end justify-around text-center rounded-md">
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold"><mark>epoch = 20</mark></p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/b2_2_20.jpg" />
+        </div>
+        <div class="p-2 flex flex-col justify-center w-full">
+          <p class="pb-2 font-bold">gif</p>
+          <img class="object-contain rounded-md" style="max-height: 250px;" src="images/b2_2_20.gif" />
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

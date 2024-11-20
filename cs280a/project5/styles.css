@@ -1,0 +1,15 @@
+body {
+  background-color: aliceblue;
+}
+
+.container {
+  background-color: white;
+}
+
+mark {
+  padding: 3px 5px;
+  background-color: rgb(238, 222, 238);
+  color: indigo;
+  font-weight: bold;
+  border-radius: 5px;
+}
