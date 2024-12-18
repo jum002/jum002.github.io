@@ -20,7 +20,28 @@
         <!-- Buttons on the Right -->
         <ul class="flex space-x-6">
           <li><a href="./design.html" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Design</a></li>
-          <li><a href="./implementation.html" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Implementation</a></li>
+          <li class="relative group">
+            <button class="navbar-link flex items-center font-semibold hover:underline decoration-2 underline-offset-4" aria-expanded="true" aria-haspopup="true">
+              Implementation
+              <svg class="-mr-1 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+              </svg>
+            </button>
+            <ul class="absolute hidden group-hover:block mt-2 bg-white shadow-lg rounded-lg py-2 w-48">
+              <li>
+                <a href="./vision.html" 
+                   class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900">Vision</a>
+              </li>
+              <li>
+                <a href="./trajectory.html" 
+                   class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900">Trajectory</a>
+              </li>
+              <li>
+                <a href="./control.html" 
+                   class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900">Control</a>
+              </li>
+            </ul>
+          </li>
           <li><a href="./results.html" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Results</a></li>
           <li><a href="./conclusion.html" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Conclusion</a></li>
           <li><a href="./team.html" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Team</a></li>
@@ -40,12 +61,46 @@
       </div>
     </section>
 
-    <!-- Section 1: Two Columns -->
-    <section id="design" class="py-16 bg-white">
+    <!-- Overview -->
+    <section id="implementation" class="py-20 bg-gray-white">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4">Overview</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Learn about the technologies, frameworks, and tools implemented in the development of our project. Efficient coding practices and robust solutions bring the project to life.
+        </p>
+      </div>
+    </section>
+
+    <!-- System Flow -->
+    <section id="results" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-8">System Outline</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Card 1 -->
+          <div class="p-6 border border-gray-200 rounded-lg shadow hover:shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Vision</h3>
+            <p class="text-gray-600">Description of the first result achieved through this project.</p>
+          </div>
+          <!-- Card 2 -->
+          <div class="p-6 border border-gray-200 rounded-lg shadow hover:shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Trajectory Modeling & Prediction</h3>
+            <p class="text-gray-600">Description of the second result achieved through this project.</p>
+          </div>
+          <!-- Card 3 -->
+          <div class="p-6 border border-gray-200 rounded-lg shadow hover:shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Model Predictive Control</h3>
+            <p class="text-gray-600">Description of the third result achieved through this project.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demo -->
+    <section id="design" class="py-16 bg-gray-white">
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div>
-            <h2 class="text-3xl font-bold mb-4">Design</h2>
+            <h2 class="text-3xl font-bold mb-4">Demo</h2>
             <p class="text-gray-600 leading-relaxed">
               Explore the clean and modern design approach used in this project. With user-friendly interfaces and aesthetically pleasing layouts, our design sets the foundation for success.
             </p>
@@ -57,46 +112,12 @@
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- Section 2: Full-width with Background -->
-    <section id="implementation" class="py-20 bg-gray-100">
-      <div class="container mx-auto px-4 text-center">
-        <h2 class="text-4xl font-bold text-gray-800 mb-4">Implementation</h2>
-        <p class="text-gray-600 max-w-2xl mx-auto">
-          Learn about the technologies, frameworks, and tools implemented in the development of our project. Efficient coding practices and robust solutions bring the project to life.
-        </p>
-      </div>
-    </section>
-
-    <!-- Section 3: Three Columns -->
-    <section id="results" class="py-16 bg-white">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-8">Results</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <!-- Card 1 -->
-          <div class="p-6 border border-gray-200 rounded-lg shadow hover:shadow-lg">
-            <h3 class="text-xl font-semibold mb-2">Result 1</h3>
-            <p class="text-gray-600">Description of the first result achieved through this project.</p>
-          </div>
-          <!-- Card 2 -->
-          <div class="p-6 border border-gray-200 rounded-lg shadow hover:shadow-lg">
-            <h3 class="text-xl font-semibold mb-2">Result 2</h3>
-            <p class="text-gray-600">Description of the second result achieved through this project.</p>
-          </div>
-          <!-- Card 3 -->
-          <div class="p-6 border border-gray-200 rounded-lg shadow hover:shadow-lg">
-            <h3 class="text-xl font-semibold mb-2">Result 3</h3>
-            <p class="text-gray-600">Description of the third result achieved through this project.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    </section> 
 
     <!-- Footer -->
     <footer id="resources" class="bg-gray-900 text-white py-8">
       <div class="container mx-auto px-4 text-center">
-        <p class="text-gray-400">&copy; 2024 Final Project. All rights reserved.</p>
+        <p class="text-gray-400">&copy; EECS/ME C206A Team 8, Fall 2024, UC Berkeley</p>
       </div>
     </footer>
 

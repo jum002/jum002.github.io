@@ -1,0 +1,31 @@
+body {
+  background-color: aliceblue;
+}
+
+.container {
+  background-color: white;
+}
+
+mark {
+  padding: 3px 5px;
+  background-color: rgb(238, 222, 238);
+  color: indigo;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.download-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.download-btn:hover {
+  background-color: #0056b3;
+}
