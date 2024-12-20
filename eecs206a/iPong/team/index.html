@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>iPong</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/styles/styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../assets/icons/logo2.svg" type="image/svg+xml">
+  </head>
+
+  <body class="bg-gray-100 text-gray-800">
+
+    <!-- Top Navigation Bar -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 navbar-transition">
+      <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <!-- Title on the Left -->
+        <h1 class="text-2xl font-bold navbar-text px-5 py-1 flex-1"><a href="../">iPong</a></h1>
+  
+        <!-- Buttons on the Right -->
+        <div class="hidden lg:flex space-x-6 px-5 py-1">
+          <a href="../design" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Design</a>
+          <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" 
+            class="navbar-link flex font-semibold hover:underline decoration-2 underline-offset-4" type="button">
+            <a href="../implementation/">Implementation</a>
+            <svg class="-mr-1 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+              <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <!-- Dropdown menu -->
+          <div id="dropdownHover" class="mt-2 hidden bg-white shadow-lg rounded-lg py-2 w-48">
+            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+              <li><a href="../implementation/vision/" class="block px-4 py-2 font-semibold text-gray-700 hover:bg-gray-100 hover:text-gray-900">Vision</a></li>
+              <li><a href="../implementation/trajectory/" class="block px-4 py-2 font-semibold text-gray-700 hover:bg-gray-100 hover:text-gray-900">Trajectory</a></li>
+              <li><a href="../implementation/control/" class="block px-4 py-2 font-semibold text-gray-700 hover:bg-gray-100 hover:text-gray-900">Control</a></li>
+            </ul>
+          </div>
+          <a href="../results" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Results</a>
+          <a href="../conclusion" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Conclusion</a>
+          <a href="../team" class="navbar-link font-semibold underline decoration-4 underline-offset-4">Team</a>
+          <a href="../resources" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Resources</a>
+        </div>
+  
+        <!-- Mobile Menu Button -->
+        <button id="dropdownDefaultButton" data-dropdown-toggle="mobileMenu" 
+          data-dropdown-offset-distance="20"
+          class="lg:hidden navbar-link" type="button">
+          <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          </button>
+      </div>
+    </nav>
+  
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="lg:hidden z-20 hidden bg-gray-400 shadow-lg rounded-lg py-2  px-20 w-full absolute top-full left-0">
+      <ul class="py-2 text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+        <li><a href="../design" class="block px-4 py-2 navbar-link font-semibold hover:bg-gray-100 hover:text-gray-900">Design</a></li>
+        <li><a href="../implementation" class="block px-4 py-2 navbar-link font-semibold hover:bg-gray-100 hover:text-gray-900">Implementation</a></li>
+        <li><a href="../results" class="block px-4 py-2 navbar-link font-semibold hover:bg-gray-100 hover:text-gray-900">Results</a></li>
+        <li><a href="../conclusion" class="block px-4 py-2 navbar-link font-semibold hover:bg-gray-100 hover:text-gray-900">Conclusion</a></li>
+        <li><a href="../team" class="block px-4 py-2 navbar-link font-semibold underline decoration-4 underline-offset-4 hover:bg-gray-100 hover:text-gray-900">Team</a></li>
+        <li><a href="../resources" class="block px-4 py-2 navbar-link font-semibold hover:bg-gray-100 hover:text-gray-900">Resources</a></li>
+      </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gray-900 h-[400px] flex items-center justify-center">
+      <img src="../assets/images/team.jpg" 
+          alt="Hero Image" 
+          class="absolute inset-0 w-full h-full object-cover opacity-50">
+      <div class="text-center relative z-10">
+        <h1 class="text-5xl font-bold text-white drop-shadow-lg">Team</h1>
+        <!-- <p class="text-lg text-gray-300 mt-4">A Modern Approach to Project Presentation</p> -->
+      </div>
+    </section>
+
+    <!-- Members --> 
+    <section id="members" class="py-16 bg-white">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <h2 class="text-3xl font-bold text-center mb-8">Members</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Card 1 -->
+          <div class="p-6 border border-gray-200 rounded-lg shadow hover:shadow-lg">
+            <div class="flex items-center justify-center mb-10">
+              <img src="../assets/images/johnson.jpg" class="max-h-80 rounded-lg"/>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Johnson Chiang</h3>
+            <p class="text-gray-600 mb-5">
+              Johnson is a M.Eng Mechanical Engineering student interested in robotics. He has
+              experience in applying simple linear control to drones.
+            </p>
+            <p class="text-gray-900 font-semibold">
+              Contributions: ...
+            </p>
+          </div>
+          <!-- Card 2 -->
+          <div class="p-6 border border-gray-200 rounded-lg shadow hover:shadow-lg">
+            <div class="flex items-center justify-center mb-10">
+              <img src="../assets/images/jack.jpg" class="max-h-80 rounded-lg"/>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Jack Meehan</h3>
+            <p class="text-gray-600 mb-5">
+              Jack is an M.S. Mechanical Engineering student interested in controls, and he has worked on projects
+              with drones and fab vehicle optimization.
+            </p>
+            <p class="text-gray-900 font-semibold">
+              Contributions: ...
+            </p>
+          </div>
+          <!-- Card 3 -->
+          <div class="p-6 border border-gray-200 rounded-lg shadow hover:shadow-lg">
+            <div class="flex items-center justify-center mb-10">
+              <img src="../assets/images/junhua.jpg" class="max-h-80 rounded-lg"/>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Junhua (Michael) Ma</h3>
+            <p class="text-gray-600 mb-5">
+              Junhua is an M.Eng Electrical Engineering & Computer Science student interested in robotics and computer vision.
+              He has experience with software development and AI.
+            </p>
+            <p class="text-gray-900 font-semibold">
+              Contributions: ...
+            </p>
+          </div>
+          <!-- Card 4 -->
+          <div class="p-6 border border-gray-200 rounded-lg shadow hover:shadow-lg">
+            <div class="flex items-center justify-center mb-10">
+              <img src="../assets/images/howei.jpg" class="max-h-80 rounded-lg"/>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Howei Lu</h3>
+            <p class="text-gray-600 mb-5">
+              Howei is an M.Eng Mechanical Engineering student. He has experience in welding cobot operation.
+            </p>
+            <p class="text-gray-900 font-semibold">
+              Contributions: ...
+            </p>
+          </div>
+          <!-- Card 5 -->
+          <div class="p-6 border border-gray-200 rounded-lg shadow hover:shadow-lg">
+            <div class="flex items-center justify-center mb-10">
+              <img src="../assets/images/adam.jpg" class="max-h-80 rounded-lg"/>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Adam</h3>
+            <p class="text-gray-600 mb-5">Description...</p>
+            <p class="text-gray-900 font-semibold">
+              Contributions: ...
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lab -->
+    <section id="lab" class="py-16 bg-gray-white">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          <!-- Text Content -->
+          <div>
+            <h2 class="text-3xl font-bold mb-6 px-5">Lab</h2>
+            <p class="text-gray-600 leading-relaxed px-5">
+              Our robotics workspace, where our team comes together to brainstorm ideas and solve complex challenges, 
+              Every team member contributes their unique expertise to achieve a shared vision. 
+            </p>
+          </div>
+          <!-- Image -->
+          <div class="flex justify-center">
+            <img 
+              src="../assets/images/lab.png" 
+              alt="Design Section Image" 
+              class="rounded-lg shadow-lg max-h-96 w-full object-cover md:w-auto">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Thanks --> 
+    <section id="thanks" class="py-16 bg-white">
+      <div class="container mx-auto px-4 max-w-5xl">
+        <h2 class="text-3xl font-bold text-center mb-8">Special Thanks To...</h2>
+        <div class="grid grid-cols-1 md:grid-cols-1 gap-8">
+          <!-- Card 1 -->
+          <div class="p-6 border border-gray-200 rounded-lg shadow hover:shadow-lg">
+            <h3 class="text-2xl font-semibold mb-5">Professor Horowitz</h3>
+            <img src="../assets/images/horowitz.png">
+          </div>
+          <!-- Card 2 -->
+          <div class="p-6 border border-gray-200 rounded-lg shadow hover:shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">Professor ...</h3>
+          </div>
+          <!-- Card 3 -->
+          <div class="p-6 border border-gray-200 rounded-lg shadow hover:shadow-lg">
+            <h3 class="text-xl font-semibold mb-2">TAs & Instructional Staff</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="resources" class="bg-gray-900 text-white py-8">
+      <div class="container mx-auto px-4 text-center">
+        <p class="text-gray-400">&copy; EECS/ME C206A Team 8, Fall 2024, UC Berkeley</p>
+      </div>
+    </footer>
+
+    <script src="../assets/js/animte_trans_nav.js"></script>
+    <script src="../assets/js/mobile_menu_toggle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+  </body>
+</html>
