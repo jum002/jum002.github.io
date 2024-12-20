@@ -99,9 +99,21 @@
       <div class="container mx-auto px-4 max-w-6xl">
         <div class="grid grid-cols-3 gap-12 items-center">
           <div class="col-span-2">
-            <h2 class="text-3xl font-bold mb-4">Locating Ball in Camera Frame</h2>
+            <h2 class="text-3xl font-bold mb-8">Locating Ball in Camera Frame</h2>
             <p class="text-gray-600 leading-relaxed">
-              ...
+              <b>HSV Thresholding: </b>
+              We first obtain optimal HSV filtering thresholds by manual tuning until we can only see points in the image associated with the ball 
+              remaining after the thresholding process. Given the RGB image from RealSense, we then first perform HSV thresholding so that only points 
+              of the ball remains, and then derive the 2D ball coordinate in the image by averaging the coordinate of these points.
+              <br /><br />
+              <b>DBSCAN Clustering: </b>
+              Since averaging is used to obtain the 2D ball coordinate in the image which is highly susceptible to noise (outliers), 
+              we utilize a popular clustering technique to first locate the largest cluster in all the points that passed through the HSV thresholding,
+              and then remove any points that are outside of the main cluster. This leads to overall greater robustness against background noises in the image.
+              <br /><br />
+              <b>Depth Thresholding: </b>
+              Since the RealSense Camera we used is only accurate up to 3 meters, we further eliminate background noise by remove any points with depth above 
+              3 meters. This helps removing influence of objects further in the background that are not useful for ball detection.
             </p>
           </div>
           <div>

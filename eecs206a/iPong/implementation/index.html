@@ -77,19 +77,28 @@
     </section>
 
     <!-- Overview -->
-    <section id="overview" class="py-20 bg-gray-white">
+    <section id="overview" class="py-20 bg-white">
       <div class="container mx-auto px-4 text-center">
-        <h2 class="text-4xl font-bold text-gray-800 mb-4">Overview</h2>
-        <p class="text-gray-600 max-w-3xl mx-auto text-left">
-          Any summary or overview paragraph about implementations (including complete system diagram, flow charts)
+        <h2 class="text-4xl font-bold text-gray-800 mb-4">System Outline</h2>
+        <p class="text-gray-600 max-w-4xl mx-auto text-left leading-relaxed mb-8">
+          The system overall consists of 3 major stages: starting with vision through cameras to obtain 3D ball position in the robot frame, 
+          followed by algorithms to detect launch and calculate projectile motion to predict ball trajectory and determine a good strike point, 
+          and ending with the MPC controller moving the arm to strike the ball.
         </p>
+        <div class="mt-16">
+          <img 
+            src="../assets/images/impl_diagram.jpg" 
+            alt="System Diagram" 
+            class="rounded-lg w-full max-w-4xl mx-auto"
+          />
+        </div>
       </div>
     </section>
 
     <!-- System Flow -->
-    <section id="system" class="py-16 bg-white">
+    <section id="system" class="py-16 pt-1 bg-white">
       <div class="container mx-auto px-4 max-w-6xl">
-        <h2 class="text-3xl font-bold text-center mb-8">System Outline</h2>
+        <h2 class="text-3xl font-bold text-center mb-8">Implementation Details</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <!-- Card 1 -->
           <a href="./vision/" class="block">
