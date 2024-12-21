@@ -1,0 +1,14 @@
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.navbar-transition {
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+mark {
+  background-color: rgba(255, 255, 0, 0.0); /* Light yellow with transparency */
+  color: rosybrown; /* Keeps the text color as is */
+  padding: 0.2em; /* Optional: Adds some padding for better readability */
+  border-radius: 4px; /* Optional: Makes the edges rounded */
+}

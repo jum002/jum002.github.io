@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>iPong</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/styles/styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../assets/icons/logo2.svg" type="image/svg+xml">
+  </head>
+
+  <body class="bg-gray-100 text-gray-800">
+
+    <!-- Top Navigation Bar -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 navbar-transition">
+      <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <!-- Title on the Left -->
+        <h1 class="text-2xl font-bold navbar-text px-5 py-1 flex-1"><a href="../">iPong</a></h1>
+  
+        <!-- Buttons on the Right -->
+        <div class="hidden lg:flex space-x-6 px-5 py-1">
+          <a href="../design" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Design</a>
+          <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" 
+            class="navbar-link flex font-semibold hover:underline decoration-2 underline-offset-4" type="button">
+            <a href="../implementation/">Implementation</a>
+            <svg class="-mr-1 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+              <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <!-- Dropdown menu -->
+          <div id="dropdownHover" class="mt-2 hidden bg-white shadow-lg rounded-lg py-2 w-48">
+            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+              <li><a href="../implementation/vision/" class="block px-4 py-2 font-semibold text-gray-700 hover:bg-gray-100 hover:text-gray-900">Vision</a></li>
+              <li><a href="../implementation/trajectory/" class="block px-4 py-2 font-semibold text-gray-700 hover:bg-gray-100 hover:text-gray-900">Trajectory</a></li>
+              <li><a href="../implementation/control/" class="block px-4 py-2 font-semibold text-gray-700 hover:bg-gray-100 hover:text-gray-900">Control</a></li>
+            </ul>
+          </div>
+          <a href="../results" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Results</a>
+          <a href="../conclusion" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Conclusion</a>
+          <a href="../team" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Team</a>
+          <a href="../resources" class="navbar-link font-semibold underline decoration-4 underline-offset-4">Resources</a>
+        </div>
+  
+        <!-- Mobile Menu Button -->
+        <button id="dropdownDefaultButton" data-dropdown-toggle="mobileMenu" 
+          data-dropdown-offset-distance="20"
+          class="lg:hidden navbar-link" type="button">
+          <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          </button>
+      </div>
+    </nav>
+  
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="lg:hidden z-20 hidden bg-gray-400 shadow-lg rounded-lg py-2  px-20 w-full absolute top-full left-0">
+      <ul class="py-2 text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+        <li><a href="../design" class="block px-4 py-2 navbar-link font-semibold hover:bg-gray-100 hover:text-gray-900">Design</a></li>
+        <li><a href="../implementation" class="block px-4 py-2 navbar-link font-semibold hover:bg-gray-100 hover:text-gray-900">Implementation</a></li>
+        <li><a href="../results" class="block px-4 py-2 navbar-link font-semibold hover:bg-gray-100 hover:text-gray-900">Results</a></li>
+        <li><a href="../conclusion" class="block px-4 py-2 navbar-link font-semibold hover:bg-gray-100 hover:text-gray-900">Conclusion</a></li>
+        <li><a href="../team" class="block px-4 py-2 navbar-link font-semibold underline decoration-4 underline-offset-4 hover:bg-gray-100 hover:text-gray-900">Team</a></li>
+        <li><a href="../resources" class="block px-4 py-2 navbar-link font-semibold hover:bg-gray-100 hover:text-gray-900">Resources</a></li>
+      </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gray-900 h-[400px] flex items-center justify-center">
+      <img src="../assets/images/resources.jpg" 
+          alt="Hero Image" 
+          class="absolute inset-0 w-full h-full object-cover opacity-50">
+      <div class="text-center relative z-10">
+        <h1 class="text-5xl font-bold text-white drop-shadow-lg">Resources</h1>
+        <!-- <p class="text-lg text-gray-300 mt-4">A Modern Approach to Project Presentation</p> -->
+      </div>
+    </section>
+
+    <!-- Project Repo -->
+    <section id="repo" class="py-20 bg-gray-100">
+      <div class="container mx-auto px-4 text-center">
+        <!-- Section Title -->
+        <h2 class="text-4xl font-bold text-gray-800 mb-6">Project Code</h2>
+        
+        <!-- Description -->
+        <p class="text-gray-600 max-w-2xl mx-auto mb-8 leading-relaxed">
+          This project uses ROS to interface with the Sawyer robot and Python to implement all key vision and control components.
+        </p>
+        
+        <!-- GitHub Button -->
+        <a 
+          href="https://github.com/jum002/106-Final-Project" 
+          target="_blank" 
+          class="inline-flex items-center px-6 py-3 bg-gray-800 text-white font-semibold rounded-lg shadow-md hover:bg-gray-900 transition duration-300"
+        >
+          <!-- GitHub Icon -->
+          <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path 
+              d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.438 9.8 8.207 11.387.6.111.793-.261.793-.58 0-.287-.012-1.244-.018-2.254-3.338.725-4.042-1.611-4.042-1.611-.546-1.387-1.333-1.756-1.333-1.756-1.089-.744.083-.729.083-.729 1.204.084 1.838 1.237 1.838 1.237 1.07 1.833 2.809 1.303 3.495.997.108-.775.418-1.303.76-1.602-2.665-.3-5.466-1.333-5.466-5.933 0-1.31.468-2.38 1.236-3.221-.124-.302-.535-1.52.117-3.167 0 0 1.008-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.292-1.552 3.3-1.23 3.3-1.23.652 1.647.241 2.865.117 3.167.768.841 1.236 1.911 1.236 3.221 0 4.611-2.804 5.628-5.475 5.922.429.37.812 1.096.812 2.212 0 1.599-.014 2.89-.014 3.283 0 .319.192.696.8.578C20.565 21.797 24 17.31 24 12c0-6.63-5.37-12-12-12z"
+            />
+          </svg>
+          View Repository
+        </a>
+      </div>
+    </section>
+
+    <!-- Matrials Used -->
+    <section id="materials" class="py-16 bg-white">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="grid grid-cols-3 gap-12 items-center">
+          <!-- Left Section (Wider) -->
+          <div class="col-span-2">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800">Materials Used</h2>
+            <ul class="list-disc list-inside space-y-2 text-gray-700">
+              <li><span class="font-semibold">Rethink Sawyer Robot:</span> 6 DOF robotic arm with head and waist cameras.</li>
+              <li><span class="font-semibold">Intel RealSense Depth Camera D435:</span> High-precision depth-sensing camera.</li>
+              <li><b>Tripod Stand</b> for RealSense Camera.</li>
+              <li><b>AR Tags</b> for locating RealSense Camera.</li>
+              <li><b>Duck Tapes</b> for surface mounting.</li>
+              <li><b>Ping Pong Racket</b> for hitting tasks.</li>
+              <li><b>Ping Pong Balls</b> (various colors).</li>
+              <li>Other Balls: Tennis, Ornament Balls, etc.</li>
+            </ul>
+          </div>
+    
+          <!-- Right Section (Smaller) -->
+          <div class="flex justify-center">
+            <img 
+              src="../assets/images/sawyer.png" 
+              alt="Saywer Robot" 
+              class="rounded-lg shadow-lg max-w-full h-auto border border-gray-200"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- References -->
+    <section id="references" class="py-16 bg-gray-white">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div>
+          <h2 class="text-3xl font-bold mb-4">References</h2>
+          <ul class="list-disc list-inside space-y-2 text-gray-700">
+            <li>RealSense: <a href="https://www.intelrealsense.com/depth-camera-d435/" target="_blank" class="text-blue-600 hover:underline">https://www.intelrealsense.com/depth-camera-d435/</a></li>
+            <li>Rethink Robotics Documentation: <a href="https://support.rethinkrobotics.com/support/solutions/articles/80000980205-running-examples-overview" target="_blank" class="text-blue-600 hover:underline">https://support.rethinkrobotics.com/support/solutions/articles/80000980205-running-examples-overview</a></li>
+            <li>UC Berkeley EECS/ME C206A Labs, Fall 2024</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="resources" class="bg-gray-900 text-white py-8">
+      <div class="container mx-auto px-4 text-center">
+        <p class="text-gray-400">&copy; EECS/ME 206A Team 8, Fall 2024, UC Berkeley</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <script src="../assets/js/animte_trans_nav.js"></script>
+    <script src="../assets/js/mobile_menu_toggle.js"></script>
+  </body>
+</html>

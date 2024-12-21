@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>iPong</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/styles/styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../assets/icons/logo2.svg" type="image/svg+xml">
+  </head>
+
+  <body class="bg-gray-100 text-gray-800">
+
+    <!-- Top Navigation Bar -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 navbar-transition">
+      <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <!-- Title on the Left -->
+        <h1 class="text-2xl font-bold navbar-text px-5 py-1 flex-1"><a href="../">iPong</a></h1>
+  
+        <!-- Buttons on the Right -->
+        <div class="hidden lg:flex space-x-6 px-5 py-1">
+          <a href="../design" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Design</a>
+          <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" 
+            class="navbar-link flex font-semibold hover:underline decoration-2 underline-offset-4" type="button">
+            <a href="../implementation/">Implementation</a>
+            <svg class="-mr-1 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+              <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <!-- Dropdown menu -->
+          <div id="dropdownHover" class="mt-2 hidden bg-white shadow-lg rounded-lg py-2 w-48">
+            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+              <li><a href="../implementation/vision/" class="block px-4 py-2 font-semibold text-gray-700 hover:bg-gray-100 hover:text-gray-900">Vision</a></li>
+              <li><a href="../implementation/trajectory/" class="block px-4 py-2 font-semibold text-gray-700 hover:bg-gray-100 hover:text-gray-900">Trajectory</a></li>
+              <li><a href="../implementation/control/" class="block px-4 py-2 font-semibold text-gray-700 hover:bg-gray-100 hover:text-gray-900">Control</a></li>
+            </ul>
+          </div>
+          <a href="../results" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Results</a>
+          <a href="../conclusion" class="navbar-link font-semibold underline decoration-4 underline-offset-4">Conclusion</a>
+          <a href="../team" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Team</a>
+          <a href="../resources" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Resources</a>
+        </div>
+  
+        <!-- Mobile Menu Button -->
+        <button id="dropdownDefaultButton" data-dropdown-toggle="mobileMenu" 
+          data-dropdown-offset-distance="20"
+          class="lg:hidden navbar-link" type="button">
+          <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          </button>
+      </div>
+    </nav>
+  
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="lg:hidden z-20 hidden bg-gray-400 shadow-lg rounded-lg py-2  px-20 w-full absolute top-full left-0">
+      <ul class="py-2 text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+        <li><a href="../design" class="block px-4 py-2 navbar-link font-semibold hover:bg-gray-100 hover:text-gray-900">Design</a></li>
+        <li><a href="../implementation" class="block px-4 py-2 navbar-link font-semibold hover:bg-gray-100 hover:text-gray-900">Implementation</a></li>
+        <li><a href="../results" class="block px-4 py-2 navbar-link font-semibold hover:bg-gray-100 hover:text-gray-900">Results</a></li>
+        <li><a href="../conclusion" class="block px-4 py-2 navbar-link font-semibold hover:bg-gray-100 hover:text-gray-900">Conclusion</a></li>
+        <li><a href="../team" class="block px-4 py-2 navbar-link font-semibold underline decoration-4 underline-offset-4 hover:bg-gray-100 hover:text-gray-900">Team</a></li>
+        <li><a href="../resources" class="block px-4 py-2 navbar-link font-semibold hover:bg-gray-100 hover:text-gray-900">Resources</a></li>
+      </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gray-900 h-[400px] flex items-center justify-center">
+      <img src="../assets/images/conclusion.jpg" 
+          alt="Hero Image" 
+          class="absolute inset-0 w-full h-full object-cover opacity-50">
+      <div class="text-center relative z-10">
+        <h1 class="text-5xl font-bold text-white drop-shadow-lg">Conclusion</h1>
+      </div>
+    </section>
+
+    <!-- Discussion -->
+    <section id="discussion" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
+          <!-- Text Section (Larger) -->
+          <div class="md:col-span-2">
+            <h2 class="text-3xl font-semibold mb-6 text-gray-800">Discussion</h2>
+            <p class="text-gray-600 leading-relaxed mb-6">
+              Our finished solution was able to fulfill the most critical parts of the original goals, which includes: Implementing a functional MPC 
+              controller and utilizing computer vision for ball tracking. Though we are not able to develop a ball-strike algorithm that achieves a 
+              specific rebound trajectory based on the ball's initial path, we were able to learn the importance of time constraints and hardware 
+              limitations from it. Therefore, we were able to fulfill the core objectives in this project while learning and adapting through 
+              challenges as they surfaced. 
+            </p>
+          </div>
+          <!-- Image Section (Smaller) -->
+          <div class="flex justify-center">
+            <img src="../assets/images/discussion.png" alt="Discussion Section Image" class="rounded-lg max-w-full md:max-w-xs">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Difficulties -->
+    <section id="difficulties" class="py-16 bg-white">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
+          <!-- Text Section (Larger) -->
+          <div class="md:col-span-2">
+            <h2 class="text-3xl font-semibold mb-6 text-gray-800">Difficulties</h2>
+            <p class="text-gray-600 leading-relaxed mb-6">
+              There are several challenges we faced during this project, which are separated into three categories below:
+            </p>
+            <ul class="list-disc list-inside text-gray-600 mb-6">
+              <li class="mb-4"><strong>Computer Vision:</strong> Ball detection using HSV can be inconsistent and inaccurate due to noisy background, fast motion of the ball, and ball going out of frame.</li>
+              <li class="mb-4"><strong>Trajectory Prediction:</strong> Position detection with RealSense camera limited to 30 FPS and 3 meters of accurate depth, which significantly decreases accuracy and the physical space we can work with.</li>
+              <li class="mb-4"><strong>Controller:</strong> MPC solving time took more than 1 second sometimes while the ball is only airborne for less than a second. The MPC problem setup is not perfectly fine-tuned as we were not able to fully grasp the numerical limitations of the Sawyer robotic arm. Additionally, the batch approach took longer to solve the optimization problem.</li>
+            </ul>
+          </div>
+          <!-- Image Section (Smaller) -->
+          <div class="flex justify-center">
+            <img src="../assets/images/puzzles.png" alt="Difficulties Section Image" class="rounded-lg max-w-full md:max-w-xs">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Improvements -->
+    <section id="improvements" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
+          <!-- Text Section (Larger) -->
+          <div class="md:col-span-2">
+            <h2 class="text-3xl font-semibold mb-6 text-gray-800">Future Directions</h2>
+            <p class="text-gray-600 leading-relaxed mb-6">
+              Our solution's main flaw is the limited trajectories that the ball needs to be thrown through to have our robot function correctly. 
+              Due to the way we implement our initial velocity calculation, we needed to have a consistent spot for ball throwing, and we also needed 
+              to throw the ball at a particular angle and height. Another flaw is the color thresholding, which requires some of our teammates to 
+              physically cover certain areas in the background to avoid great noise even after applying DBSCAN. If we have additional time and budget, 
+              we would consider using a higher-end depth camera that provides deeper and more detailed depth information as well as higher FPS. 
+              In addition, we will try exploring different object detection algorithms that are less susceptible to noise, such as training a model 
+              for our particular application. 
+            </p>
+          </div>
+          <!-- Image Section (Smaller) -->
+          <div class="flex justify-center">
+            <img src="../assets/images/improvements.png" alt="Improvement Section Image" class="rounded-lg max-w-full md:max-w-xs">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="resources" class="bg-gray-900 text-white py-8">
+      <div class="container mx-auto px-4 text-center">
+        <p class="text-gray-400">&copy; EECS/ME 206A Team 8, Fall 2024, UC Berkeley</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <script src="../assets/js/animte_trans_nav.js"></script>
+    <script src="../assets/js/mobile_menu_toggle.js"></script>
+  </body>
+</html>

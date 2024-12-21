@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>iPong</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/styles/styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../../assets/icons/logo2.svg" type="image/svg+xml">
+  </head>
+
+  <body class="bg-gray-100 text-gray-800">
+
+    <!-- Top Navigation Bar -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 navbar-transition">
+      <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <!-- Title on the Left -->
+        <h1 class="text-2xl font-bold navbar-text px-5 py-1 flex-1"><a href="../../">iPong</a></h1>
+  
+        <!-- Buttons on the Right -->
+        <div class="hidden lg:flex space-x-6 px-5 py-1">
+          <a href="../../design" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Design</a>
+          <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" 
+            class="navbar-link flex font-semibold hover:underline decoration-2 underline-offset-4" type="button">
+            <a href="../../implementation/">Implementation</a>
+            <svg class="-mr-1 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+              <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <!-- Dropdown menu -->
+          <div id="dropdownHover" class="mt-2 hidden bg-white shadow-lg rounded-lg py-2 w-48">
+            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+              <li><a href="../../implementation/vision/" class="block px-4 py-2 font-semibold text-gray-700 hover:bg-gray-100 hover:text-gray-900">Vision</a></li>
+              <li><a href="../../implementation/trajectory/" class="block px-4 py-2 font-semibold text-gray-700 hover:bg-gray-100 hover:text-gray-900">Trajectory</a></li>
+              <li><a href="../../implementation/control/" class="block px-4 py-2 font-semibold text-gray-700 hover:bg-gray-100 hover:text-gray-900">Control</a></li>
+            </ul>
+          </div>
+          <a href="../../results" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Results</a>
+          <a href="../../conclusion" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Conclusion</a>
+          <a href="../../team" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Team</a>
+          <a href="../../resources" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Resources</a>
+        </div>
+  
+        <!-- Mobile Menu Button -->
+        <button id="dropdownDefaultButton" data-dropdown-toggle="mobileMenu" 
+          data-dropdown-offset-distance="20"
+          class="lg:hidden navbar-link" type="button">
+          <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          </button>
+      </div>
+    </nav>
+  
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="lg:hidden z-20 hidden bg-gray-400 shadow-lg rounded-lg py-2  px-20 w-full absolute top-full left-0">
+      <ul class="py-2 text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+        <li><a href="../../design" class="block px-4 py-2 navbar-link font-semibold hover:bg-gray-100 hover:text-gray-900">Design</a></li>
+        <li><a href="../../implementation" class="block px-4 py-2 navbar-link font-semibold hover:bg-gray-100 hover:text-gray-900">Implementation</a></li>
+        <li><a href="../../results" class="block px-4 py-2 navbar-link font-semibold hover:bg-gray-100 hover:text-gray-900">Results</a></li>
+        <li><a href="../../conclusion" class="block px-4 py-2 navbar-link font-semibold underline-offset-4 hover:bg-gray-100 hover:text-gray-900">Conclusion</a></li>
+        <li><a href="../../team" class="block px-4 py-2 navbar-link font-semibold  hover:bg-gray-100 hover:text-gray-900">Team</a></li>
+        <li><a href="../../resources" class="block px-4 py-2 navbar-link font-semibold hover:bg-gray-100 hover:text-gray-900">Resources</a></li>
+      </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gray-900 h-[400px] flex items-center justify-center">
+      <img src="../../assets/images/implementation.jpg" 
+          alt="Hero Image" 
+          class="absolute inset-0 w-full h-full object-cover opacity-50">
+      <div class="text-center relative z-10">
+        <h1 class="text-5xl font-bold text-white drop-shadow-lg">Implementation: Trajectory</h1>
+      </div>
+    </section>
+
+    <!-- Overview -->
+    <section id="overview" class="py-20 bg-white">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-4xl font-bold text-gray-800 mb-6">Overview</h2>
+        <p class="text-gray-600 max-w-4xl mx-auto text-left leading-relaxed mb-8">
+          Given a stream of 3D ball coordinates from vision, we want to predict the future positions of the ball, and then determine a good target point to 
+          move the end effector of the arm to strike the ball. Finally, we publish the point to a topic for access by the controller.
+        </p>
+        <div class="mt-16">
+          <img 
+            src="../../assets/images/traj_diagram.jpg" 
+            alt="System Diagram" 
+            class="rounded-lg w-full max-w-4xl mx-auto"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Compute Initial Velocity -->
+    <section id="applications" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <!-- Responsive Grid Layout -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+          <!-- Text Content -->
+          <div class="md:col-span-2">
+            <h2 class="text-3xl font-bold mb-4">Computing Initial Velocity</h2>
+            <p class="text-gray-600 leading-relaxed">
+              Given the stream of 3D ball coordinates in the robot frame from vision as input, we define 2 depth planes th1 and th2, with th1 > th2 meaning that 
+              the th1 plane is farther away from the robot. When the system picks up the first ball coordinate that crosses the th1 plane with depth value 
+              between th1 and th2, we use this coordinate as the first point \(x\). We then use the first ball coordinate that crosses the th2 plane with depth value
+              less than th2 as the second point \(x'\). We compute the velocity as \((x' - x) / (t' - t)\), where \(t\) and \(t'\) are obtained from system time using 
+              Python's <mark>time</mark> library. This setup offers a robust way to detect ball launch as the ball can be freely moved at any velocity 
+              and not count as a ball launch as long as it's not crossing the depth planes.
+            </p>
+          </div>
+          <!-- Image Section -->
+          <div class="md:place-self-center">
+            <img 
+              src="../../assets/images/design_traj.png" 
+              alt="Application Section Image" 
+              class="rounded-lg max-w-full md:max-h-96 object-contain shadow-lg">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trajectory Prediction -->
+    <section id="applications" class="py-16 bg-white">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="flex flex-col md:flex-row gap-12 items-stretch">
+          <div class="flex-1 flex flex-col justify-center">
+            <h2 class="text-3xl font-bold mb-6">Trajectory Prediction with Projectile Motion</h2>
+            <p class="text-gray-600 leading-relaxed">
+              Given the initial velocity, we use a simple projectile motion calculation to obtain predicted future positions of the ball. 
+              We only account for gravity, which works well enough for our lab setting.
+            </p>
+          </div>
+          <div class="flex-1 bg-gray-50 p-6 rounded-lg shadow-lg flex flex-col justify-center order-last md:order-first">
+            <div class="text-left text-gray-800">
+              <p><strong>Horizontal motion (x):</strong></p>
+              <p class="mb-4">\[
+                x(t) = x_0 + v_{0x} t
+              \]</p>
+              <p><strong>Vertical motion (y):</strong></p>
+              <p class="mb-4">\[
+                y(t) = y_0 + v_{0y} t - \frac{1}{2} g t^2
+              \]</p>
+              <p><strong>Depth motion (z):</strong></p>
+              <p class="mb-4">\[
+                z(t) = z_0 + v_{0z} t
+              \]</p>
+              <p class="mt-4">
+                <strong>Where:</strong>
+              </p>
+              <ul class="list-disc list-inside text-gray-600">
+                <li>\(x_0, y_0, z_0\): Initial position</li>
+                <li>\(v_{0x}, v_{0y}, v_{0z}\): Initial velocity components</li>
+                <li>\(g\): Gravitational acceleration</li>
+                <li>\(t\): Time</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Determining Strike Point -->
+    <section id="applications" class="py-16 bg-white-gray">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
+          <!-- Text Content -->
+          <div class="col-span-1 md:col-span-2">
+            <h2 class="text-3xl font-bold mb-4">Determining Strike Point</h2>
+            <p class="text-gray-600 leading-relaxed">
+              To pick a strike point while ensuring a safe range of operation of the Sawyer due to the fast movements, we define a strike zone around the Sawyer
+              robot and select the first point in the predicted trajectory that enters the strike zone as the strike point. This setup ensures that the target 
+              position is always within predefined limits. For ball throws that are too far away from the robot or for occasional errors in predicted trajectory
+              such that the predicted trajectory doesn't intercept the strike zone, then no strike point would be published.
+            </p>
+          </div>
+          <!-- Image Content -->
+          <div class="order-last md:order-first">
+            <img src="../../assets/images/impl_strike.png" 
+                 alt="Application Section Image" 
+                 class="rounded-lg">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="resources" class="bg-gray-900 text-white py-8">
+      <div class="container mx-auto px-4 text-center">
+        <p class="text-gray-400">&copy; EECS/ME 206A Team 8, Fall 2024, UC Berkeley</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../assets/js/animte_trans_nav.js"></script>
+    <script src="../../assets/js/mobile_menu_toggle.js"></script>
+  </body>
+</html>

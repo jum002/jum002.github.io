@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>iPong</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/styles/styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../../assets/icons/logo2.svg" type="image/svg+xml">
+  </head>
+
+  <body class="bg-gray-100 text-gray-800">
+
+    <!-- Top Navigation Bar -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 navbar-transition">
+      <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <!-- Title on the Left -->
+        <h1 class="text-2xl font-bold navbar-text px-5 py-1 flex-1"><a href="../../">iPong</a></h1>
+  
+        <!-- Buttons on the Right -->
+        <div class="hidden lg:flex space-x-6 px-5 py-1">
+          <a href="../../design" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Design</a>
+          <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" 
+            class="navbar-link flex font-semibold hover:underline decoration-2 underline-offset-4" type="button">
+            <a href="../../implementation/">Implementation</a>
+            <svg class="-mr-1 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+              <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <!-- Dropdown menu -->
+          <div id="dropdownHover" class="mt-2 hidden bg-white shadow-lg rounded-lg py-2 w-48">
+            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+              <li><a href="../../implementation/vision/" class="block px-4 py-2 font-semibold text-gray-700 hover:bg-gray-100 hover:text-gray-900">Vision</a></li>
+              <li><a href="../../implementation/trajectory/" class="block px-4 py-2 font-semibold text-gray-700 hover:bg-gray-100 hover:text-gray-900">Trajectory</a></li>
+              <li><a href="../../implementation/control/" class="block px-4 py-2 font-semibold text-gray-700 hover:bg-gray-100 hover:text-gray-900">Control</a></li>
+            </ul>
+          </div>
+          <a href="../../results" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Results</a>
+          <a href="../../conclusion" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Conclusion</a>
+          <a href="../../team" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Team</a>
+          <a href="../../resources" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Resources</a>
+        </div>
+  
+        <!-- Mobile Menu Button -->
+        <button id="dropdownDefaultButton" data-dropdown-toggle="mobileMenu" 
+          data-dropdown-offset-distance="20"
+          class="lg:hidden navbar-link" type="button">
+          <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          </button>
+      </div>
+    </nav>
+  
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="lg:hidden z-20 hidden bg-gray-400 shadow-lg rounded-lg py-2  px-20 w-full absolute top-full left-0">
+      <ul class="py-2 text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+        <li><a href="../../design" class="block px-4 py-2 navbar-link font-semibold hover:bg-gray-100 hover:text-gray-900">Design</a></li>
+        <li><a href="../../implementation" class="block px-4 py-2 navbar-link font-semibold hover:bg-gray-100 hover:text-gray-900">Implementation</a></li>
+        <li><a href="../../results" class="block px-4 py-2 navbar-link font-semibold hover:bg-gray-100 hover:text-gray-900">Results</a></li>
+        <li><a href="../../conclusion" class="block px-4 py-2 navbar-link font-semibold underline-offset-4 hover:bg-gray-100 hover:text-gray-900">Conclusion</a></li>
+        <li><a href="../../team" class="block px-4 py-2 navbar-link font-semibold  hover:bg-gray-100 hover:text-gray-900">Team</a></li>
+        <li><a href="../../resources" class="block px-4 py-2 navbar-link font-semibold hover:bg-gray-100 hover:text-gray-900">Resources</a></li>
+      </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gray-900 h-[400px] flex items-center justify-center">
+      <img src="../../assets/images/implementation.jpg" 
+          alt="Hero Image" 
+          class="absolute inset-0 w-full h-full object-cover opacity-50">
+      <div class="text-center relative z-10">
+        <h1 class="text-5xl font-bold text-white drop-shadow-lg">Implementation - Control</h1>
+      </div>
+    </section>
+
+    <!-- Overview -->
+    <section id="overview" class="py-20 bg-white">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-4xl font-bold text-gray-800 mb-6">Overview</h2>
+        <p class="text-gray-600 max-w-4xl mx-auto text-left leading-relaxed mb-8 text-center">
+          This section uses optimization to find control inputs that will drive the robot arm to the ball strike point.
+        </p>
+      </div>
+    </section>
+
+    <!-- CFTOC -->
+    <section id="applications" class="py-16 bg-white-gray">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="flex flex-col md:flex-row md:gap-12 items-center">
+          <!-- Text Content -->
+          <div class="md:w-2/3 w-full">
+            <h2 class="text-3xl font-bold mb-4">Constrained Finite Time Optimal Control (CFTOC)</h2>
+            <p class="text-gray-600 leading-relaxed">
+              We formulate our motion planning and actuation problem as the minimization of a cost function of our choosing, subject to system constraints. 
+              Solving this problem (using the <mark>cvxopt</mark> library) generates a reference trajectory of joint angle states (X) and joint velocity inputs (U) 
+              at each time step in the N-step control horizon.
+              <br /><br />
+              <b>Cost Function: </b>
+              There are three terms we seek to minimize. The first is the most important, the norm of the error between the current joint angles 
+              and those at the strike point, which are calculated using inverse kinematics based on the end-effector position. 
+              This causes the function to prioritize speed when approaching the strike point, as once the desired angles are achieved the term will 
+              incur no more cost. The second term is a penalty on control action magnitude, ensuring the arm maintains a smooth trajectory. 
+              The third term is a terminal cost constraint, improving the function's ability to reach the desired final position.
+              <br /><br />
+              <b>Constraints: </b>
+              The system dynamics are formulated using simple kinematic equations, where the joint angles are determined by the velocity 
+              (approximated as constant through each control step). The joint velocities are similarly constrained using an experimentally-derived 
+              maximum acceleration for each joint. Finally there are constraints on the initial position, to ensure uniformity between trials, and on 
+              the maximum joint angles and velocities.
+            </p>
+          </div>
+          <!-- Image -->
+          <div class="md:w-1/3 w-full mt-8 md:mt-0">
+            <img src="../../assets/images/impl_mpc.png" 
+                 alt="Application Section Image" 
+                 class="rounded-lg w-full object-cover">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Model Predictive Control -->
+    <section id="applications" class="py-16 bg-white">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="flex flex-col md:flex-row gap-12 items-stretch">
+          <!-- Image Section -->
+          <div class="flex-1 bg-gray-50 p-6 rounded-lg shadow-lg flex flex-col justify-center order-2 md:order-1">
+            <div class="text-left text-gray-800">
+              <img 
+                src="../../assets/images/impl_mpc1.png" 
+                alt="System Diagram" 
+                class="rounded-lg w-full max-w-4xl mx-auto"
+              />
+            </div>
+          </div>
+          <!-- Text Section -->
+          <div class="flex-1 flex flex-col justify-center order-1 md:order-2">
+            <h2 class="text-3xl font-bold mb-6">Model Predictive Control</h2>
+            <p class="text-gray-600 leading-relaxed">
+              MPC is an extension of CFTOC, where at each successive time-step we solve the CFTOC problem and implement the first control input 
+              determined by the optimization solution. By re-solving the problem each iteration, we effectively close the control loop, utilizing 
+              real-time joint angle information to determine our current control action. This is crucial, since any form of model mismatch will 
+              inherently cause our predicted state to diverge from reality without a closed-loop controller. We experimented with several different 
+              time steps and horizon lengths to find an optimized setup for our problem.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="resources" class="bg-gray-900 text-white py-8">
+      <div class="container mx-auto px-4 text-center">
+        <p class="text-gray-400">&copy; EECS/ME 206A Team 8, Fall 2024, UC Berkeley</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <script src="../../assets/js/animte_trans_nav.js"></script>
+    <script src="../../assets/js/mobile_menu_toggle.js"></script>
+  </body>
+</html>

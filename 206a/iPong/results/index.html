@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>iPong</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/styles/styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../assets/icons/logo2.svg" type="image/svg+xml">
+  </head>
+
+  <body class="bg-gray-100 text-gray-800">
+
+    <!-- Top Navigation Bar -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 navbar-transition">
+      <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <!-- Title on the Left -->
+        <h1 class="text-2xl font-bold navbar-text px-5 py-1 flex-1"><a href="../">iPong</a></h1>
+  
+        <!-- Buttons on the Right -->
+        <div class="hidden lg:flex space-x-6 px-5 py-1">
+          <a href="../design" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Design</a>
+          <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" 
+            class="navbar-link flex font-semibold hover:underline decoration-2 underline-offset-4" type="button">
+            <a href="../implementation/">Implementation</a>
+            <svg class="-mr-1 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+              <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <!-- Dropdown menu -->
+          <div id="dropdownHover" class="mt-2 hidden bg-white shadow-lg rounded-lg py-2 w-48">
+            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+              <li><a href="../implementation/vision/" class="block px-4 py-2 font-semibold text-gray-700 hover:bg-gray-100 hover:text-gray-900">Vision</a></li>
+              <li><a href="../implementation/trajectory/" class="block px-4 py-2 font-semibold text-gray-700 hover:bg-gray-100 hover:text-gray-900">Trajectory</a></li>
+              <li><a href="../implementation/control/" class="block px-4 py-2 font-semibold text-gray-700 hover:bg-gray-100 hover:text-gray-900">Control</a></li>
+            </ul>
+          </div>
+          <a href="../results" class="navbar-link font-semibold underline decoration-4 underline-offset-4">Results</a>
+          <a href="../conclusion" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Conclusion</a>
+          <a href="../team" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Team</a>
+          <a href="../resources" class="navbar-link font-semibold hover:underline decoration-2 underline-offset-4">Resources</a>
+        </div>
+  
+        <!-- Mobile Menu Button -->
+        <button id="dropdownDefaultButton" data-dropdown-toggle="mobileMenu" 
+          data-dropdown-offset-distance="20"
+          class="lg:hidden navbar-link" type="button">
+          <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          </button>
+      </div>
+    </nav>
+  
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="lg:hidden z-20 hidden bg-gray-400 shadow-lg rounded-lg py-2  px-20 w-full absolute top-full left-0">
+      <ul class="py-2 text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+        <li><a href="../design" class="block px-4 py-2 navbar-link font-semibold hover:bg-gray-100 hover:text-gray-900">Design</a></li>
+        <li><a href="../implementation" class="block px-4 py-2 navbar-link font-semibold hover:bg-gray-100 hover:text-gray-900">Implementation</a></li>
+        <li><a href="../results" class="block px-4 py-2 navbar-link font-semibold hover:bg-gray-100 hover:text-gray-900">Results</a></li>
+        <li><a href="../conclusion" class="block px-4 py-2 navbar-link font-semibold underline decoration-4 underline-offset-4 hover:bg-gray-100 hover:text-gray-900">Conclusion</a></li>
+        <li><a href="../team" class="block px-4 py-2 navbar-link font-semibold  hover:bg-gray-100 hover:text-gray-900">Team</a></li>
+        <li><a href="../resources" class="block px-4 py-2 navbar-link font-semibold hover:bg-gray-100 hover:text-gray-900">Resources</a></li>
+      </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gray-900 h-[400px] flex items-center justify-center">
+      <img src="../assets/images/results.jpg" 
+          alt="Hero Image" 
+          class="absolute inset-0 w-full h-full object-cover opacity-50">
+      <div class="text-center relative z-10">
+        <h1 class="text-5xl font-bold text-white drop-shadow-lg">Results</h1>
+      </div>
+    </section>
+
+    <!-- Vision & Trajectory -->
+    <section id="applications" class="py-16 bg-white-gray">
+      <div class="container mx-auto px-4 max-w-5xl">
+        <div class="grid grid-cols-3 gap-12 items-center">
+          <div class="col-span-2">
+            <h2 class="text-3xl font-bold mb-4">Vision & Trajectory</h2>
+            <p class="text-gray-600 leading-relaxed">
+              The computer vision software was successful in isolating the ball from the image, extracting accurate coordinates for the location of 
+              the ball even at further distances. Due to hardware constraints we had to position the camera close to the robot, so we utilized a larger 
+              ball for easier camera identification. <br /><br />
+              Trajectory modeling similarly performed well. We ran several trials with the software and compared computed trajectories to 
+              those actually performed in flight. In general, the algorithm was quite performant and mirrored what happened in reality, despite the 
+              approximation of drag-less parabolic motion. 
+            </p>
+          </div>
+          <div>
+            <img src="../assets/images/impl_strike.png" 
+                alt="Application Section Image" 
+                class="rounded-lg">
+          </div>
+        </div>
+      </div>
+    </section> 
+
+    <!-- Controller -->
+    <section id="application" class="py-16 bg-white">
+      <div class="container mx-auto px-4 max-w-5xl">
+        <!-- Title -->
+        <h2 class="text-3xl font-semibold text-gray-800 mb-8 text-center">Controller</h2>
+    
+        <!-- First Paragraph -->
+        <p class="text-gray-700 leading-relaxed mb-8 text-center sm:text-left">
+          We experimented with various horizon lengths (N = {3, 5, 10, 20, 30, 40}) and time steps (∆t = {25, 50, 100} ms) for the controller. 
+          At the scale of 25 ms between control input, our solver computation time began to exceed our desired time step, even with shorter horizons. 
+          We believe that this was a result of our control implementation and hardware constraints. We utilized the ”set joint velocities” method 
+          provided by the Intera SDK package [3], which automatically converted desired joint velocities into joint torques. This level of abstraction 
+          was convenient for control purposes; however, it added to the total computation time on the order of 10 ms. However, at longer time steps, 
+          we found our MPC to be quite performant in quickly moving the arm with good convergence toward the desired result. The figure below shows 
+          a plot of using ∆t = 50 ms, and the arm was able to track to the target point in 0.7 seconds. Similar results were achieved 
+          with N = {10, 20} and ∆t = {50, 100} ms.
+        </p>
+    
+        <!-- First Image (Smaller, responsive plot) -->
+        <div class="flex justify-center max-w-full mb-10">
+          <img src="../assets/images/results_mpc1.png" 
+               alt="Application Section Image" 
+               class="rounded-lg shadow-lg max-w-[80%] sm:max-w-[70%]">
+        </div>
+    
+        <!-- Second Paragraph -->
+        <p class="text-gray-700 leading-relaxed mb-8 text-center sm:text-left">
+          Increasing the horizon generally decreased the amount of error in final joint position, however past N = 20 we ran into the same issue 
+          of computation speed, causing our controller to be actuating with a time delay-induced model mismatch. This resulted in loss of stability 
+          and oscillation about the end-effector goal point. An example of such oscillatory behavior is shown in the figure below. We had to manually 
+          terminate the controller, leading to the extended period of zero control beginning at t = 1.75 seconds.
+        </p>
+    
+        <!-- Second Image (Smaller, responsive plot) -->
+        <div class="flex justify-center my-12 max-w-full">
+          <img src="../assets/images/results_mpc2.png" 
+               alt="Application Section Image" 
+               class="rounded-lg shadow-lg max-w-[80%] sm:max-w-[70%]">
+        </div>
+    
+        <!-- Third Paragraph -->
+        <p class="text-gray-700 leading-relaxed mb-8 text-center sm:text-left">
+          Though we achieved relatively quick motion with the MPC, due to space constraints in the laboratory we were unable to throw the ping-pong 
+          ball from much further than 3 m from the robot arm. This typically provided the Sawyer with 0.6 seconds to hit the ball, a task which proved 
+          infeasible for throws further from the robot's initial configuration. However, for throws where the ball was closer to the end-effector's 
+          starting point, the controller was able to successfully hit the ball.
+        </p>
+      </div>
+    </section>
+
+    <!-- Demos -->
+    <section id="applications" class="py-16 bg-white-gray">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="flex flex-col md:flex-row gap-12 items-stretch mb-20">
+          <!-- Image Section -->
+          <div class="flex-1 bg-gray-50 p-6 rounded-lg shadow-lg flex flex-col justify-center order-2 md:order-1">
+            <div class="text-left text-gray-800">
+              <img 
+                src="../assets/images/demo_hit.gif" 
+                alt="System Diagram" 
+                class="rounded-lg w-2/3 mx-auto"
+              />
+            </div>
+          </div>
+          <!-- Text Section -->
+          <div class="flex-1 flex flex-col justify-center order-1 md:order-2">
+            <h2 class="text-3xl font-bold mb-6">Demo: Successful Hit</h2>
+            <p class="text-gray-600 leading-relaxed">
+              Successful hit with a strike point close to the initial configuration.
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-col md:flex-row gap-12 items-stretch">
+          <!-- Text Section -->
+          <div class="flex-1 flex flex-col justify-center order-1">
+            <h2 class="text-3xl font-bold mb-6">Demo: Close to Hitting</h2>
+            <p class="text-gray-600 leading-relaxed">
+              The arm attempts to hit a more distant target, reaching the desired position shortly after the ball passes by.
+
+            </p>
+          </div>
+          <!-- Image Section -->
+          <div class="flex-1 bg-gray-50 p-6 rounded-lg shadow-lg flex flex-col justify-center order-2">
+            <div class="text-left text-gray-800">
+              <img 
+                src="../assets/images/demo_closehit.gif" 
+                alt="System Diagram" 
+                class="rounded-lg w-full max-w-4xl mx-auto"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="resources" class="bg-gray-900 text-white py-8">
+      <div class="container mx-auto px-4 text-center">
+        <p class="text-gray-400">&copy; EECS/ME 206A Team 8, Fall 2024, UC Berkeley</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <script src="../assets/js/animte_trans_nav.js"></script>
+    <script src="../assets/js/mobile_menu_toggle.js"></script>
+  </body>
+</html>
