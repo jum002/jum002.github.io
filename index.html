@@ -1,33 +1,418 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Portfolio</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20x;
-        }
-        li {
-            margin: 10px;
-        }
-    </style>
+    <title>Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>Junhua (Michael) Ma Project Portfolio</h1>
-    <h2>CS280A: Intro to Computer Vision and Computational Photography</h2>
-    <ul>
-        <li><a href="./cs280a/project1/index.html">Project 1: Colorizing the Prokudin-Gorskii Photo Collection</a></li>
-        <li><a href="./cs280a/project2/index.html">Project 2: Fun with Filters and Frequencies</a></li>
-        <li><a href="./cs280a/project3/index.html">Project 3: Face Morphing</a></li>
-        <li><a href="./cs280a/project4/index.html">Project 4: Stitching and Photo Mosaics</a></li>
-        <li><a href="./cs280a/project5/index.html">Project 5: Fun with Diffusion Models</a></li>
-        <li><a href="./cs280a/project6/index.html">Final Project: Custom Background for NeRF</a></li>
-    </ul>
-    <h2>EECS206A: Intro to Robotics</h2>
-    <ul>
-        <li><a href="./206a/iPong/">Final Project: iPong</a></li>
-    </ul>
+
+<body class="bg-gray-50 text-gray-800">
+    <header class="bg-white shadow sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-6">
+            <h1 class="text-4xl font-extrabold text-gray-800">Junhua (Michael) Ma Project Portfolio</h1>
+            <!-- <p class="text-lg font-medium text-gray-500">CS280A: Intro to Computer Vision and Computational Photography</p> -->
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-10">
+        <!-- Filters -->
+        <div class="flex flex-wrap items-center justify-between mb-8">
+            <h2 class="text-2xl font-bold">Research/Personal Projects</h2>
+        </div>
+
+        <!-- Project Grid -->
+        <div id="research-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div class="research-card bg-white rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all"
+                        data-date="2024-06-15">
+                <img src="./images/tn_siesta.png" alt="Project Image" class="rounded-t-lg w-full h-48 object-contain">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mb-2">Siesta (Engineering Psychiatry Research Project)</h3>
+                    <p class="text-gray-500 text-sm">April 2022 - June 2024</p>
+                    <div class="mt-2">
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-green-500 rounded-full">Research</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-yellow-500 rounded-full">Full-Stack Software Development</span>
+                    </div>
+                </div>
+                <a href="./research/siesta/" target="_blank" class="block text-center text-blue-500 font-semibold py-2">View Project</a>
+            </div>
+
+            <div class="research-card bg-white rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all"
+                        data-date="2024-09-10">
+                <img src="./images/tn_fergi.png" alt="Project Image" class="rounded-t-lg w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mb-2">Facial Expression Data Collection Pipeline (with Generative Model integration)</h3>
+                    <p class="text-gray-500 text-sm">April 2023 - June 2024</p>
+                    <div class="mt-2">
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-green-500 rounded-full">Research</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-yellow-500 rounded-full">Full-Stack Software Development</span>
+                    </div>
+                </div>
+                <a href="#" class="block text-center text-slate-500 font-semibold py-2">Coming Soon</a>
+            </div>
+
+            <div class="research-card bg-white rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all"
+                        data-date="2025-05-10">
+                <img src="./images/tn_nn_stability.png" alt="Project Image" class="rounded-t-lg w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mb-2">Neural Network Controller for VTOL Aircraft with Safety Guarantees</h3>
+                    <p class="text-gray-500 text-sm">September 2024 - Present</p>
+                    <div class="mt-2">
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-green-500 rounded-full">Research</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-yellow-500 rounded-full">AI</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-yellow-500 rounded-full">Software</span>
+                    </div>
+                </div>
+                <a href="#" class="block text-center text-slate-500 font-semibold py-2">In Progess...</a>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="flex flex-wrap items-center justify-between mb-8 mt-12">
+            <h2 class="text-2xl font-bold">Coursework Projects</h2>
+            <div>
+                <button class="px-4 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600" onclick="filterProjects('all')">All</button>
+                <button class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg shadow hover:bg-gray-300" onclick="filterProjects('compvis')">Computer Vision</button>
+                <button class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg shadow hover:bg-gray-300" onclick="filterProjects('robotics')">Robotics</button>
+                <button class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg shadow hover:bg-gray-300" onclick="filterProjects('ai')">AI</button>
+                <button class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg shadow hover:bg-gray-300" onclick="filterProjects('software')">Software</button>
+                <button class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg shadow hover:bg-gray-300" onclick="filterProjects('digital')">Digital Design</button>
+            </div>
+        </div>
+
+        <!-- Project Grid -->
+        <div id="project-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <!-- Example Project Card -->
+            <div class="project-card bg-white rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all
+                        graduate cs280a compvis"
+                        data-date="2024-08-28">
+                <img src="./images/tn_cs280a_proj1.jpeg" alt="Project Image" class="rounded-t-lg w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mb-2">Colorizing the Prokudin-Gorskii Photo Collection (Berkeley CS280A Project 1)</h3>
+                    <p class="text-gray-500 text-sm">August 2024</p>
+                    <div class="mt-2">
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-blue-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('graduate')">Graduate</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-green-500 rounded-full cursor-pointer" 
+                        onclick="filterProjects('cs280a')">CS280A</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-yellow-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('compvis')">Computer Vision</span>
+                    </div>
+                </div>
+                <a href="./cs280a/project1/" target="_blank" class="block text-center text-blue-500 font-semibold py-2">View Project</a>
+            </div>
+
+            <div class="project-card bg-white rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all
+                        graduate cs280a compvis"
+                        data-date="2024-09-11">
+                <img src="./images/tn_cs280a_proj2.jpg" alt="Project Image" class="rounded-t-lg w-full h-48 object-contain">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mb-2">Fun with Filters and Frequencies (Berkeley CS280A Project 2)</h3>
+                    <p class="text-gray-500 text-sm">September 2024</p>
+                    <div class="mt-2">
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-blue-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('graduate')">Graduate</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-green-500 rounded-full cursor-pointer" 
+                        onclick="filterProjects('cs280a')">CS280A</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-yellow-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('compvis')">Computer Vision</span>
+                    </div>
+                </div>
+                <a href="./cs280a/project2/" target="_blank" class="block text-center text-blue-500 font-semibold py-2">View Project</a>
+            </div>
+
+            <div class="project-card bg-white rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all
+                        graduate cs280a compvis"
+                        data-date="2024-09-25">
+                <img src="./images/tn_cs280a_proj3.gif" alt="Project Image" class="rounded-t-lg w-full h-48 object-contain">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mb-2">Face Morphing (Berkeley CS280A Project 3)</h3>
+                    <p class="text-gray-500 text-sm">September 2024</p>
+                    <div class="mt-2">
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-blue-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('graduate')">Graduate</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-green-500 rounded-full cursor-pointer" 
+                        onclick="filterProjects('cs280a')">CS280A</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-yellow-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('compvis')">Computer Vision</span>
+                    </div>
+                </div>
+                <a href="./cs280a/project3/" target="_blank" class="block text-center text-blue-500 font-semibold py-2">View Project</a>
+            </div>
+
+            <div class="project-card bg-white rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all
+                        graduate cs280a compvis"
+                        data-date="2024-10-09">
+                <img src="./images/tn_cs280a_proj4.jpg" alt="Project Image" class="rounded-t-lg w-full h-48 object-contain">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mb-2">Stitching & Mosaics (Berkeley CS280A Project 4)</h3>
+                    <p class="text-gray-500 text-sm">October 2024</p>
+                    <div class="mt-2">
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-blue-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('graduate')">Graduate</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-green-500 rounded-full cursor-pointer" 
+                        onclick="filterProjects('cs280a')">CS280A</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-yellow-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('compvis')">Computer Vision</span>
+                    </div>
+                </div>
+                <a href="./cs280a/project4/" target="_blank" class="block text-center text-blue-500 font-semibold py-2">View Project</a>
+            </div>
+
+            <div class="project-card bg-white rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all
+                        graduate cs280a compvis ai"
+                        data-date="2024-11-10">
+                <img src="./images/tn_cs280a_proj5.gif" alt="Project Image" class="rounded-t-lg w-full h-48 object-contain">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mb-2">Fun with Diffusion Models (Berkeley CS280A Project 5)</h3>
+                    <p class="text-gray-500 text-sm">November 2024</p>
+                    <div class="mt-2">
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-blue-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('graduate')">Graduate</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-green-500 rounded-full cursor-pointer" 
+                        onclick="filterProjects('cs280a')">CS280A</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-yellow-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('compvis')">Computer Vision</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-yellow-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('ai')">AI</span>
+                    </div>
+                </div>
+                <a href="./cs280a/project5/" target="_blank" class="block text-center text-blue-500 font-semibold py-2">View Project</a>
+            </div>
+
+            <div class="project-card bg-white rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all
+                        graduate cs280a compvis ai"
+                        data-date="2024-12-10">
+                <img src="./images/tn_cs280a_proj6.gif" alt="Project Image" class="rounded-t-lg w-full h-48 object-contain">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mb-2">Custom Background for NeRF (Berkeley CS280A Final Project)</h3>
+                    <p class="text-gray-500 text-sm">December 2024</p>
+                    <div class="mt-2">
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-blue-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('graduate')">Graduate</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-green-500 rounded-full cursor-pointer" 
+                        onclick="filterProjects('cs280a')">CS280A</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-yellow-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('compvis')">Computer Vision</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-yellow-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('ai')">AI</span>
+                    </div>
+                </div>
+                <a href="./cs280a/project6/" target="_blank" class="block text-center text-blue-500 font-semibold py-2">View Project</a>
+            </div>
+
+            <div class="project-card bg-white rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all
+                        graduate eecs206a robotics"
+                        data-date="2024-12-20">
+                <img src="./images/tn_ipong.png" alt="Project Image" class="rounded-t-lg w-full h-48 object-contain">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mb-2">iPong: Sawyer Arm Plays Ping Pong (Berkeley EECS206A Final Project)</h3>
+                    <p class="text-gray-500 text-sm">October - December 2024</p>
+                    <div class="mt-2">
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-blue-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('graduate')">Graduate</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-green-500 rounded-full cursor-pointer" 
+                        onclick="filterProjects('eecs206a')">EECS206A</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-yellow-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('robotics')">Robotics</span>
+                    </div>
+                </div>
+                <a href="./206a/iPong/" target="_blank" class="block text-center text-blue-500 font-semibold py-2">View Project</a>
+            </div>
+
+            <div class="project-card bg-white rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all
+                        undergrad ece5 robotics"
+                        data-date="2021-12-03">
+                <img src="./images/tn_line_follow.png" alt="Project Image" class="rounded-t-lg w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mb-2">PID Line Following Robot (UCSD ECE5 Final Project)</h3>
+                    <p class="text-gray-500 text-sm">November - December 2021</p>
+                    <div class="mt-2">
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-blue-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('undergrad')">Undergrad</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-green-500 rounded-full cursor-pointer" 
+                        onclick="filterProjects('ece5')">ECE5</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-yellow-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('robotics')">Robotics</span>
+                    </div>
+                </div>
+                <a href="https://ece5-lab-4-team-x.netlify.app/" target="_blank" class="block text-center text-blue-500 font-semibold py-2">View Project</a>
+            </div>
+
+            <div class="project-card bg-white rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all
+                        undergrad ece16 digital"
+                        data-date="2022-03-20">
+                <img src="./images/tn_volume_warn2.jpeg" alt="Project Image" class="rounded-t-lg w-full h-48 object-contain">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mb-2">Volume Warning System (UCSD ECE16 Final Project)</h3>
+                    <p class="text-gray-500 text-sm">February - March 2022</p>
+                    <div class="mt-2">
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-blue-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('undergrad')">Undergrad</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-green-500 rounded-full cursor-pointer" 
+                        onclick="filterProjects('ece16')">ECE16</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-yellow-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('digital')">Digital Design</span>
+                    </div>
+                </div>
+                <a href="./ucsd/ece16/" target="_blank" class="block text-center text-blue-500 font-semibold py-2">View Project</a>
+            </div>
+
+            <div class="project-card bg-white rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all
+                        undergrad ece141 digital"
+                        data-date="2023-12-10">
+                <img src="./images/tn_mihak.png" alt="Project Image" class="rounded-t-lg w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mb-2">MIHAK Microprocessor (UCSD ECE141L Final Project)</h3>
+                    <p class="text-gray-500 text-sm">October - December 2023</p>
+                    <div class="mt-2">
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-blue-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('undergrad')">Undergrad</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-green-500 rounded-full cursor-pointer" 
+                        onclick="filterProjects('ece141')">ECE141L</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-yellow-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('digital')">Digital Design</span>
+                    </div>
+                </div>
+                <a href="./ucsd/files/mihak_report.pdf" target="_blank" class="block text-center text-blue-500 font-semibold py-2">View Project</a>
+            </div>
+
+            <div class="project-card bg-white rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all
+                        undergrad ece45 software"
+                        data-date="2022-03-10">
+                <img src="./images/tn_synthesizer.png" alt="Project Image" class="rounded-t-lg w-full h-48 object-contain">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mb-2">Synthesizer (UCSD ECE45 Final Project)</h3>
+                    <p class="text-gray-500 text-sm">March 2022</p>
+                    <div class="mt-2">
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-blue-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('undergrad')">Undergrad</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-green-500 rounded-full cursor-pointer" 
+                        onclick="filterProjects('ece145')">ECE45</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-yellow-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('software')">Software</span>
+                    </div>
+                </div>
+                <a href="https://github.com/jum002/Synthesizer-Project" target="_blank" class="block text-center text-blue-500 font-semibold py-2">View Project</a>
+            </div>
+
+            <div class="project-card bg-white rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all
+                        undergrad cse158 ai"
+                        data-date="2023-12-05">
+                <img src="./images/tn_anime.png" alt="Project Image" class="rounded-t-lg w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mb-2">Anime Recommender System (UCSD CSE158 Final Project)</h3>
+                    <p class="text-gray-500 text-sm">November - December 2023</p>
+                    <div class="mt-2">
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-blue-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('undergrad')">Undergrad</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-green-500 rounded-full cursor-pointer" 
+                        onclick="filterProjects('cse158')">CSE158</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-yellow-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('ai')">AI</span>
+                    </div>
+                </div>
+                <a href="./ucsd/files/anime_recommendation_report.pdf" target="_blank" class="block text-center text-blue-500 font-semibold py-2">View Project</a>
+            </div>
+
+            <div class="project-card bg-white rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all
+                        undergrad cse151b compvis ai"
+                        data-date="2022-10-02">
+                <img src="./images/tn_image_categorization.png" alt="Project Image" class="rounded-t-lg w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mb-2">Image Categorization with Neural Network (UCSD CSE151B Project)</h3>
+                    <p class="text-gray-500 text-sm">September 2022</p>
+                    <div class="mt-2">
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-blue-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('undergrad')">Undergrad</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-green-500 rounded-full cursor-pointer" 
+                        onclick="filterProjects('cse151b')">CSE151B</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-yellow-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('compvis')">Computer Vision</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-yellow-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('ai')">AI</span>
+                    </div>
+                </div>
+                <a href="./ucsd/files/image_categorization_report.pdf" target="_blank" class="block text-center text-blue-500 font-semibold py-2">View Project</a>
+            </div>
+
+            <div class="project-card bg-white rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all
+                        undergrad cse151b compvis ai"
+                        data-date="2022-10-28">
+                <img src="./images/tn_image_caption.png" alt="Project Image" class="rounded-t-lg w-full h-48 object-contain">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mb-2">Image Caption Generation with LSTM (UCSD CSE151B Project)</h3>
+                    <p class="text-gray-500 text-sm">October 2022</p>
+                    <div class="mt-2">
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-blue-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('undergrad')">Undergrad</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-green-500 rounded-full cursor-pointer" 
+                        onclick="filterProjects('cse151b')">CSE151B</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-yellow-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('compvis')">Computer Vision</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-yellow-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('ai')">AI</span>
+                    </div>
+                </div>
+                <a href="./ucsd/files/caption_generation_report.pdf" target="_blank" class="block text-center text-blue-500 font-semibold py-2">View Project</a>
+            </div>
+
+            <div class="project-card bg-white rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all
+                        undergrad cse151b ai"
+                        data-date="2022-11-23">
+                <img src="./images/tn_transformer_nlp.png" alt="Project Image" class="rounded-t-lg w-full h-48 object-contain">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mb-2">NLP Sentiment Analysis with Transformers (UCSD CSE151B Project)</h3>
+                    <p class="text-gray-500 text-sm">November 2022</p>
+                    <div class="mt-2">
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-blue-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('undergrad')">Undergrad</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-green-500 rounded-full cursor-pointer" 
+                        onclick="filterProjects('cse151b')">CSE151B</span>
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-yellow-500 rounded-full cursor-pointer"
+                        onclick="filterProjects('ai')">AI</span>
+                    </div>
+                </div>
+                <a href="./ucsd/files/transformers_nlp_report.pdf" target="_blank" class="block text-center text-blue-500 font-semibold py-2">View Project</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center py-6">
+    </footer>
+
+    <!-- JavaScript for Filtering and Sorting -->
+    <script>
+        function filterProjects(category) {
+            const cards = document.querySelectorAll('.project-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function sortProjects(section) {
+            const grid = document.getElementById(`${section}-grid`);
+            const cards = Array.from(grid.querySelectorAll(`.${section}-card`));
+
+            // Sort cards by the `data-date` attribute
+            cards.sort((a, b) => {
+                const dateA = new Date(a.getAttribute('data-date'));
+                const dateB = new Date(b.getAttribute('data-date'));
+                return dateB - dateA; // Newest to Oldest
+            });
+
+            // Reorder cards in the grid
+            cards.forEach(card => grid.appendChild(card));
+        }
+        
+        sortProjects('research')
+        sortProjects('project')
+    </script>
 </body>
+
 </html>
