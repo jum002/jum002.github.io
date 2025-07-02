@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CS280 Project 3 - Junhua (Michael) Ma</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        hr {
+            margin: 2em 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>CS280 Project 3 - Facial Keypoints Detection</h1>
+    <p><strong>Junhua (Michael) Ma</strong></p>
+
+    <hr>
+
+    <h3>Part 1: Direct Coordinate Regression</h3>
+
+    <h4>Model</h4>
+    <p>CNN for keypoint regression on 224×224 grayscale images. It uses three convolutional blocks with batch normalization, 
+      Leaky ReLU, pooling, and dropout, followed by three fully connected layers. The final output is a 136-dimensional vector representing 68 keypoints. 
+      Xavier initialization is applied to the fully connected layers for stable training.</p>
+
+    <h4>Training</h4>
+    <p>The model is trained for 10 epochs with MSE loss and Adam optimizer.</p>
+    <p>Training loss curve for different learning rates:</p>
+    <img src="./images/part1_loss_lr.png" alt="Part 1 Loss LR">
+
+    <p>Training loss curve for different loss function:</p>
+    <img src="./images/part1_loss_act.png" alt="Part 1 Loss Function">
+
+    <p>Overall, the training suggests that learning rate of 0.0001 with loss function SmoothL1 leads to minimum training loss.</p>
+
+    <h4>Results</h4>
+    <p>Sampled results from test set are shown below, with ground truth keypoints (green) and predicted keypoints (magenta). While the predicted keypoints roughly align with ground truth, they are quite inaccurate.</p>
+    <img src="./images/part1_results.png" alt="Part 1 Results">
+
+    <hr>
+
+    <h3>Part 2: Transfer Learning for Keypoint Detection</h3>
+
+    <h4>Mode</h4>
+    <p>This model adapts a pretrained ResNet-18 for keypoint regression by replacing the final classification layer with a fully connected 
+    layer outputting 136 values (68 keypoints).</p>
+
+    <h4>Training</h4>
+    <p>The training uses the following strategy for 10 epochs with MSE loss and Adam optimizer:</p>
+    <ul>
+        <li>Epochs 1-5: Freeze the pretrained backbone and only train the new layers</li>
+        <li>Epochs 6-10: Train the entire model</li>
+    </ul>
+
+    <p>Training loss curve for different learning rates:</p>
+    <img src="./images/part2_loss_act.png" alt="Part 2 Loss LR">
+
+    <p>Training loss curve comparing part 1 direct regression and part 2 transfer learning:</p>
+    <img src="./images/part2_loss_comp.png" alt="Part 2 Loss Comparison">
+
+    <p>From the loss curves of transfer learning, we see the loss decrease after transitioning to fine-tune the entire model mid-training. Similar to part 1, the SmoothL1 loss function performs better. Transfer learning overall outperforms direct coordinate regression.</p>
+
+    <h4>Results</h4>
+    <p>Sampled results from test set are shown below, with ground truth keypoints (green) and predicted keypoints (magenta). Compared to part 1, the predicted keypoints appear more accurate. There is room for improvement by training longer, tuning hyperparameters, or using pretrained models like DINO or MAE.</p>
+    <img src="./images/part2_results.png" alt="Part 2 Results">
+
+    <hr>
+
+    <h3>Part 3: Heatmap-based Keypoint Detection</h3>
+
+    <h4>Model</h4>
+    <p>Simple U-Net adapted for keypoint heatmap prediction from grayscale images. It uses four downsampling ConvBlocks for encoding, 
+      mirrored by three upsampling UpConv layers with skip connections and corresponding ConvBlocks for decoding. 
+      The final 1×1 convolution outputs 68 heatmaps, one per keypoint.</p>
+
+    <h4>Training</h4>
+    <p>I tested both MSE and BCE loss. MSE resulted in cleaner combined heatmaps but failed to learn sharp peaks. BCE better localized individual peaks, so it was selected. The model is trained for 20 epochs.</p>
+
+    <p>Training loss curve:</p>
+    <img src="./images/part3_loss.png" alt="Part 3 Loss Curve">
+
+    <h4>Results</h4>
+    <p>Sampled results from test set shown below. <b>Each row (left to right): true keypoints, true heatmap, resized true heatmap, predicted heatmap, predicted keypoints</b>. The predicted keypoints are more accurate than in part 1 and 2.</p>
+    <img src="./images/part3_results.png" alt="Part 3 Results">
+
+</body>
+</html>
